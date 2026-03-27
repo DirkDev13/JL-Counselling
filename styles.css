@@ -103,6 +103,7 @@ a:hover{
     cursor: pointer;
     padding: 0.5rem 0.5rem;
     background: var(--text-muted);
+    border-radius: 0.25rem;
 }
 
 
