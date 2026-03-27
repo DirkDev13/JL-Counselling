@@ -1,0 +1,105 @@
+:root {
+--bg-dark: hsl(0 0% 90%);
+--bg: hsl(300 0% 95%);
+--bg-light: hsl(300 50% 100%);
+--text: hsl(300 0% 4%);
+--text-muted: hsl(0 0% 28%);
+--highlight: hsl(300 50% 100%);
+--border: hsl(NaN 0% 50%);
+--border-muted: hsl(340 0% 62%);
+--primary: hsl(193 100% 15%);
+--secondary: hsl(22 76% 25%);
+--danger: hsl(9 21% 41%);
+--warning: hsl(52 23% 34%);
+--success: hsl(147 19% 36%);
+--info: hsl(217 22% 41%);
+--ff: 'Lato', sans-serif;
+}
+
+body{
+    background-color: var(--bg-dark);
+    columns: var(--text);
+    font-family: var(--ff);
+}
+
+.Profile-photo{
+    border-radius: 50%;
+}
+
+.info-container{
+    padding: 1.5rem;
+    background-color: var(--bg-light);
+    margin: 1.5rem;
+    box-shadow: var(--shadow);
+    border: var(--border-card);
+    border-top: 1px solid var(--highlight);
+    border-radius: 1rem;
+}
+
+.callout-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.pi-box{
+    gap: 2rem;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.location{
+    color: var(--text-muted);
+}
+
+p{
+    margin: 0;
+}
+h3{
+    margin-bottom: 0.5rem;
+}
+
+
+.btn{
+  all: unset;          /* removes browser defaults */
+  padding: 1rem 1rem;
+  color: var(--bg-dark);
+  text-decoration: none;
+  border: var(--border-card);
+  border-top: 1px solid var(--highlight);
+  border-radius: 1rem;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  font: inherit;       /* matches the <a> font */
+  width: 5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.contact{
+    background-color: var(--secondary);
+}
+.booknow{
+    background: var(--primary);
+}
+
+.btn:hover{
+    background-color: var(--warning);
+    /* color: var(--text-muted); */
+}
+
+.button-list{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.calendly-inline-widget{
+   min-width: 3rem;
+   height: 42rem;
+}
+
