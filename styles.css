@@ -27,9 +27,9 @@ body{
 }
 
 .info-container{
-    padding: 1.5rem;
+    /* padding: 1.5rem; */
     background-color: var(--bg-light);
-    margin: 1.5rem;
+    margin: 1rem;
     box-shadow: var(--shadow);
     border: var(--border-card);
     border-top: 1px solid var(--highlight);
@@ -41,6 +41,7 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-top: 0;
 }
 
 .pi-box{
@@ -99,7 +100,12 @@ h3{
 }
 
 .calendly-inline-widget{
-   min-width: 3rem;
-   height: 42rem;
+   min-width: 45rem;
+   height: 60rem;
+}
+
+.container2{
+    display: flex;
+    align-items: flex-start;
 }
 
