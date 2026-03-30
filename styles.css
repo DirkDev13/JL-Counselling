@@ -39,7 +39,7 @@ p {
 
 /* HERO */
 .hero {
-    height: 65vh;
+    padding: 4rem 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@ p {
 
 .hero-content h1 {
     font-size: 3rem;
-    margin-bottom: 12px;
+    margin-bottom: 1rem;
 }
 
 .hero-content p {
@@ -161,7 +161,9 @@ header{
     justify-content: end;
     align-items: center;
     background-color: var(--peach);
+    padding-top: 1rem;
     padding-right: 1rem;
+
 }
 
 /* FOOTER */
