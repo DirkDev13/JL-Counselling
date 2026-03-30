@@ -19,10 +19,6 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
 
-    background-image: url("https://i.imgur.com/2yaf2sQ.png");
-    background-size: cover;
-    background-attachment: fixed;
-    background-blend-mode: lighten;
 }
 
 section {
@@ -48,7 +44,7 @@ p {
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-color: var(--cream);
+    background-color: var(--peach);
 
 }
 
@@ -140,6 +136,20 @@ p {
     font-style: italic;
 }
 
+.get-in-touch{
+    color: var(--accent-green);
+    font-weight: bolder;
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+}
+
+a:hover{
+    text-decoration: underline;
+    text-underline-offset: 0.25rem;
+    cursor: pointer;
+    color: var(--accent-olive);
+}
+
 /* BOOKING */
 .booking {
     text-align: center;
@@ -150,6 +160,8 @@ header{
     gap: 1rem;
     justify-content: end;
     align-items: center;
+    background-color: var(--peach);
+    padding-right: 1rem;
 }
 
 /* FOOTER */
