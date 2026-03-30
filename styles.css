@@ -2,118 +2,109 @@
 body {
     margin: 0;
     padding: 0;
-    background: #FFF8F6;
-    color: #3A3A3A;
-    font-family: 'Source Sans Pro', sans-serif;
+    background: #1C1C1C;
+    color: #F2F2F2;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.7;
 
-    /* subtle floral background texture */
     background-image: url("https://i.imgur.com/2yaf2sQ.png");
     background-size: cover;
     background-attachment: fixed;
-    background-blend-mode: soft-light;
+    background-blend-mode: multiply;
 }
 
 section {
-    max-width: 900px;
+    max-width: 1200px;
     margin: auto;
-    padding: 70px 20px;
+    padding: 80px 25px;
 }
 
-h1, h2, h3 {
-    font-family: 'Playfair Display', serif;
-    margin-top: 0;
-}
-
-h2 {
-    text-align: center;
-    color: #C59DA9;
+h1, h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    color: #C9A86A;
+    letter-spacing: 1px;
 }
 
 /* HERO */
 .hero {
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    padding-top: 120px;
-    padding-bottom: 120px;
+
+    background: linear-gradient(
+        rgba(28, 28, 28, 0.7),
+        rgba(28, 28, 28, 0.7)
+    ),
+    url("https://i.imgur.com/jr7Ks2N.jpeg");
+    background-size: cover;
+    background-position: center;
 }
 
-.hero h1 {
-    font-size: 3rem;
-    color: #C59DA9;
+.hero-content h1 {
+    font-size: 3.2rem;
+    margin-bottom: 10px;
 }
 
-.subtitle {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+.hero-content p {
+    color: #E8DCC3;
+    margin-bottom: 25px;
 }
 
 /* BUTTON */
 .btn {
     all: unset;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    background: #C59DA9;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 2rem;
+    background: #C9A86A;
+    color: #1C1C1C;
+    padding: 0.9rem 2.4rem;
+    border-radius: 3rem;
     cursor: pointer;
     font-size: 1rem;
     letter-spacing: 0.5px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-
-    margin: 0 auto;
+    font-weight: 500;
+    transition: 0.3s ease;
 }
 
 .btn:hover {
-    background: #a88491;
+    background: #b8935e;
 }
 
 /* ABOUT */
-.pi-container {
+.about-content {
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
+    gap: 3rem;
+    align-items: center;
 }
 
-.personal-info {
-    text-align: center;
-}
-
-.personal-info img {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
+.portrait img {
+    width: 280px;
+    height: 320px;
     object-fit: cover;
+    border-radius: 1rem;
+    border: 3px solid #C9A86A;
 }
 
-.personal-info h3,
-.personal-info p {
-    margin: 5px 0;
-}
-
-.location {
-    color: #A8C0A0;
+.subtitle {
+    color: #BFA67C;
+    margin-bottom: 15px;
 }
 
 /* SERVICES */
-.services ul {
-    list-style: none;
-    padding: 0;
+.service-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
 }
 
-.services li {
-    margin: 10px 0;
-    padding-left: 18px;
-    position: relative;
-}
-
-.services li::before {
-    content: "✿";
-    color: #C59DA9;
-    position: absolute;
-    left: 0;
+.service-item {
+    background: #2A2A2A;
+    padding: 1.4rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    border-left: 3px solid #C9A86A;
 }
 
 /* TESTIMONIALS */
@@ -121,18 +112,18 @@ h2 {
     text-align: center;
 }
 
-.testimonial-card {
-    background: white;
-    border-radius: 1rem;
+.testimonial {
+    background: #2A2A2A;
     padding: 1.5rem;
-    margin: 1.2rem 0;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    margin: 1.4rem auto;
+    border-radius: 1rem;
+    max-width: 700px;
 }
 
-.testimonial-card span {
+.testimonial span {
     display: block;
-    margin-top: 10px;
-    color: #A8C0A0;
+    margin-top: 12px;
+    color: #C9A86A;
     font-size: 0.9rem;
     font-style: italic;
 }
@@ -145,7 +136,7 @@ h2 {
 /* FOOTER */
 footer {
     text-align: center;
-    padding: 25px;
-    color: #555;
-    background: #F1EAEA;
+    padding: 30px;
+    color: #C9A86A;
+    background: #161616;
 }
