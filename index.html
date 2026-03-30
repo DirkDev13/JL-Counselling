@@ -1,38 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jane Lord Mentorship</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bloom Counseling - Example Site</title>
+
+    <!-- Fonts -->
+    https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Source+Sans+Pro:wght@300;400;600&display=swap
+
+    <!-- Styles -->
+    styles.css
 </head>
-<header>
-    <a class="btn get-in-touch">Get in Touch</a>
-    <a>FAQs</a>
-    <a>socials</a>
-</header>
+
 <body>
-    <div class="info-container callout-box">
-        <h1> Coaching and mentorship</h1>
-        <h2> Find Direction, Trust yourself and be the best you</h2>
-    </div>
-    <div class="container2">
-        <div class="info-container pi-box" >
-            <div class="pi">
-                <img class="Profile-photo" src="assets/images/Profile-photo.jpg" alt="back-icon" class="back-icon" >
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>Bloom Counseling</h1>
+        <p class="subtitle">Gentle support for your emotional wellbeing</p>
+        <button class="btn" onclick="scrollToBooking()">Book a Session</button>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about">
+        <div class="pi-container">
+
+            <div class="personal-info">
+                assets/images/Profile-photo.jpg
                 <h3>Jane Lord</h3>
-                <p>BSc something</p>
-                <p class="location">East London</p>
+                <p>Registered Wellness Counselor</p>
+                <p class="location">East London, South Africa</p>
             </div>
+
             <div class="bio">
-                <p>My approach is gentle, person‑centered, and grounded in the belief that every individual has the capacity for growth when given the right environment. I’m here to help you explore your thoughts and emotions at your own pace, without judgment or pressure.
-                Over the years, I’ve worked with individuals experiencing stress, anxiety, life transitions, and moments of feeling “stuck.” I understand how overwhelming life can feel, and my goal is to walk alongside you as you rediscover clarity, confidence, and balance.
-                Whether you’re navigating a difficult season, seeking personal growth, or simply needing a safe space to talk things through, I’m here to support you — one step at a time.</p>
+                <p>
+                    I offer a warm, nurturing space where you can explore your emotions with 
+                    compassion and clarity. I believe healing blooms when we feel safe, seen, and supported.
+                </p>
+                <p>
+                    My work focuses on emotional wellbeing, anxiety support, life transitions, and 
+                    helping individuals reconnect with their inner strength. You don’t need to navigate 
+                    challenging seasons alone — I’m here to walk alongside you.
+                </p>
             </div>
+
         </div>
-        <div class="calendly-inline-widget info-container" data-url="https://calendly.com/dirkdklerk/30min">
+    </section>
+
+    <!-- SERVICES -->
+    <section class="services">
+        <h2>Areas of Support</h2>
+        <ul>
+            <li>Anxiety & Emotional Regulation</li>
+            <li>Life Transitions & Personal Growth</li>
+            <li>Self‑Worth & Confidence</li>
+            <li>Stress & Overwhelm</li>
+            <li>Relationship & Interpersonal Guidance</li>
+            <li>Burnout Recovery</li>
+        </ul>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials">
+        <h2>Client Reflections</h2>
+
+        <div class="testimonial-card">
+            <p>“Jane helped me rediscover a sense of calm during one of the most overwhelming periods of my life.”</p>
+            <span>— A.M.</span>
         </div>
-    </div>
-    <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+
+        <div class="testimonial-card">
+            <p>“I always felt heard and understood. Her gentle approach made it so easy to open up.”</p>
+            <span>— L.R.</span>
+        </div>
+
+        <div class="testimonial-card">
+            <p>“Working with Jane has helped me regain confidence in myself and my decisions.”</p>
+            <span>— S.K.</span>
+        </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section class="booking" id="booking">
+        <h2>Book a Session</h2>
+
+        <div class="calendly-inline-widget"
+             data-url="https://calendly.com/YOUR-CALENDLY-LINK"
+             style="min-width: 320px; height: 700px;">
+        </div>
+
+        https://assets.calendly.com/assets/external/widget.js
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        © 2026 Bloom Counseling
+    </footer>
+
+    <!-- JS -->
+    main.js</script>
 </body>
 </html>
