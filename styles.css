@@ -37,6 +37,7 @@ p {
     margin-bottom: 1rem;
 }
 
+
 /* HERO */
 .hero {
     padding: 4rem 2rem;
@@ -90,12 +91,6 @@ p {
   height: 60rem;       
 }
 
-@media (max-width: 768px) {
- .about-content {
-    flex-wrap: wrap;
-  }
-}
-
 .portrait img {
     width: 280px;
     height: 320px;
@@ -141,7 +136,7 @@ p {
 }
 
 /* TESTIMONIALS */
-.testimonials, .services{
+.testimonials, .services, .social{
     text-align: center;
     padding: 4rem;
 }
@@ -166,20 +161,23 @@ p {
 .get-in-touch{
     color: var(--primary);
     font-weight: bolder;
-    text-decoration: underline;
-    text-underline-offset: 0.25rem;
+    border: 3px solid var(--primary);
+    border-radius: 1rem;
+}
+
+.get-in-touch:hover{
+    color: var(--secondary);
+    border: 3px solid var(--secondary);
 }
 
 a:hover{
-    text-decoration: underline;
-    text-underline-offset: 0.25rem;
     cursor: pointer;
-    color: var(--secondary);
 }
 
 /* BOOKING */
 .booking {
     text-align: center;
+    padding-bottom: 0;
 }
 
 header{
@@ -198,10 +196,55 @@ header{
     border-radius: 50%;
 }
 
+.social{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.social-box{
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    background: var(--card-bg);
+    border-radius: 0.6rem;
+    box-shadow: 0 3px 10px var(--border-soft);
+    
+}
+
+.social-icons{
+    width: 3rem;
+    height: 3rem;
+}
+
+.social-box-inner{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.social-icons-box{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.logo{
+    width: 10rem;
+    border-radius: 2rem;
+}
+
 /* FOOTER */
 footer {
     text-align: center;
     padding: 30px;
     color: var(--text-dark);
     background: var(--bg-secondary);
+}
+
+@media (max-width: 768px) {
+ .about-content, .social-box{
+    flex-wrap: wrap;
+  }
 }
