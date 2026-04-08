@@ -11,16 +11,25 @@
 <body>
 
     <!-- HERO -->
-    <header class="hero" id="hero">
+
+    <header>
+        <img class="logo" src="assets/images/logo-transparent.png">
+        <div class="header-link-box">
+            <a class="header-link" onclick="scrollToAbout()">About</a>
+            <a class="header-link" onclick="scrollToSupport()">Areas of Support</a>
+            <a class="header-link" onclick="scrollToSocial()">Contact Us</a>
+        </div>
+    </header>
+    <div class="hero" id="hero">
         <div class="hero-content">
             <h1>Supporting the Youth of South Africa</h1>
             <p>Gentle, grounded guidance for life’s challenging moments.</p>
             <button class="btn" onclick="scrollToBooking()">Book a Session</button>
         </div>
-    </header>
+    </div>
 
     <!-- ABOUT -->
-    <section class="about">
+    <section class="about" id="about">
         <div class="about-content">
             <div class="portrait">
                 <img class="profile-photo" src="assets/images/Profile-photo.jpg" alt="Profile photo">
@@ -66,7 +75,7 @@
     </section>
 
     <!-- SERVICES -->
-    <section class="services">
+    <section class="services" id="support">
         <h2>Areas of Support</h2>
         <div class="service-grid">
             <div class="service-item">Counselling</div>

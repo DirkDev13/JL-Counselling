@@ -182,12 +182,13 @@ a:hover{
 
 header{
     display: flex;
-    gap: 1rem;
-    justify-content: end;
     background-color: var(--bg-primary);
     padding-top: 1rem;
-    padding-right: 1rem;
-
+    padding-right: 15rem;
+    padding-left: 10rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0;
 }
 
 .icons{
@@ -243,8 +244,27 @@ footer {
     background: var(--bg-secondary);
 }
 
+.header-link-box{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.header-link:hover{
+    color: var(--secondary);
+    text-decoration: underline;
+    text-underline-offset: 0.5rem;
+}
+
 @media (max-width: 768px) {
  .about-content, .social-box{
     flex-wrap: wrap;
   }
+header{
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+.header-link-box{
+    /* gap:0.25rem; */
+}
 }
