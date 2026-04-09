@@ -191,6 +191,8 @@ header{
     margin-bottom: 0;
 }
 
+
+
 .icons{
     width: 2rem;
     height: 2rem;
@@ -256,6 +258,24 @@ footer {
     text-underline-offset: 0.5rem;
 }
 
+.contact-header{
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-primary);
+    padding: 1rem 15rem 1rem 10rem;
+}
+
+
+
+.contact-header h1 {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+}
+
+
 @media (max-width: 768px) {
  .about-content, .social-box{
     flex-wrap: wrap;
@@ -264,5 +284,23 @@ header{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
+
+.contact-header {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem 1rem;
+    }
+
+    .contact-header h1 {
+        position: static;      /* disable absolute centering */
+        transform: none;
+        margin-top: 1rem;
+    }
+
+    .logo {
+        margin-bottom: 1rem;
+    }
+
 
 }
