@@ -301,6 +301,9 @@ form{
     width: 80%;
 }
 
+.h-captcha{
+    align-self: center;
+}
 
 @media (max-width: 768px) {
  .about-content, .social-box{

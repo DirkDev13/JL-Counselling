@@ -14,7 +14,8 @@
     </header>
 <body>
   <div class="formbox"> 
-    <form >
+    <form action="https://api.web3forms.com/submit" method="POST">
+      <input type="hidden" name="access_key" value="ff5b0a03-e632-4154-becd-49b9eb9a6431">
       <div class="form-element">
         <Label>Name</Label>
         <input type="text" name="name" required>
@@ -24,26 +25,60 @@
         <label>Email</label>
         <input type="email" name="email" required>
       </div>
-
-      <div class="form-element">
-        <label>Subject</label>
-        <input type="text" name="subject" required>
-      </div>
     
       <div class="form-element">
         <label>Message</label>
         <textarea name="message" rows="25" required></textarea>
       </div>
+      <form>
+
+      <div class="h-captcha" data-captcha="true"></div>
 
       <button class="btn" type="submit">Send Message</button>
     </form>
   </div>
-
-
- 
-
 </body>
-    <footer>
-        © 2026 Jane Lord counselling, all rights reserved
-    </footer>
+<footer>
+    © 2026 Jane Lord counselling, all rights reserved
+</footer>
+<script src="https://web3forms.com/client/script.js" async defer></script>
+<script>
+  const form = document.getElementById('form');
+  const submitBtn = form.querySelector('button[type="submit"]');
+
+  form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      formData.append("access_key", "ff5b0a03-e632-4154-becd-49b9eb9a6431");
+
+      const originalText = submitBtn.textContent;
+
+      submitBtn.textContent = "Sending...";
+      submitBtn.disabled = true;
+
+      try {
+          const response = await fetch("https://api.web3forms.com/submit", {
+              method: "POST",
+              body: formData
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+              alert("Success! Your message has been sent.");
+              form.reset();
+          } else {
+              alert("Error: " + data.message);
+          }
+
+      } catch (error) {
+          alert("Something went wrong. Please try again.");
+      } finally {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+      }
+  });
+</script>
+
 </html>
