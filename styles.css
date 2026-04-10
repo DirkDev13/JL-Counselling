@@ -305,6 +305,10 @@ form{
     align-self: center;
 }
 
+textarea{
+    font-family: 'Roboto', sans-serif;
+}
+
 @media (max-width: 768px) {
  .about-content, .social-box{
     flex-wrap: wrap;
