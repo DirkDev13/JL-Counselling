@@ -14,7 +14,7 @@
 body {
     margin: 0;
     padding: 0;
-    background: var(--bg-light);
+    background: var(--bg-primary);
     color: var(--text-dark);
     font-family: 'Roboto', sans-serif;
     line-height: 1.7;
