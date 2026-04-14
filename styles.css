@@ -31,7 +31,8 @@ body {
     padding: 0;
     background: var(--bg-light);
     color: var(--text-dark);
-    font-family: 'Roboto', sans-serif;
+    font-family: "Abadi MT", "Abadi", sans-serif;
+    font-weight: 200; /* ExtraLight */
     line-height: 1.7;
 
 }
@@ -43,7 +44,7 @@ section {
 }
 
 h1, h2, label{
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Abadi MT", "Abadi", sans-serif;
     font-weight: 600;
     color: var(--secondary);
 }
