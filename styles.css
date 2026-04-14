@@ -55,20 +55,22 @@ p {
 
 /* HERO */
 .hero {
-    padding: 4rem 2rem;
+    padding: 10rem 2rem;
     margin-top: 1rem;
     display: flex;
     justify-content: center;
     text-align: center;
-    background:
+    background: 
     linear-gradient(
-                hsl(57, 70%, 96%),
-                hsla(170, 26%, 78%, 0)
-            ),
-    url(assets/images/Designer.png);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+        to bottom,
+        hsl(57, 70%, 96%) 0%,
+        hsl(169, 26%, 78%, 0.85) 55%,
+        hsl(169, 26%, 78%, 0.0) 100%
+    ), url(assets/images/Designer.png);
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    
 }
 
 .hero-content h1 {
