@@ -4,8 +4,8 @@
 
 :root {
     /* Brand colours */
-    --primary: hsl(22, 76%, 55%);
-    --secondary: hsl(188, 39%, 48%);
+    --secondary: hsl(22, 76%, 55%);
+    --primary: hsl(188, 39%, 48%);
 
     /* Backgrounds */
     --bg-primary: hsl(169, 26%, 78%);     /* softened teal */
@@ -59,12 +59,11 @@ p {
     margin-top: 1rem;
     display: flex;
     justify-content: center;
-    align-items: center;
     text-align: center;
     background:
     linear-gradient(
                 hsl(57, 70%, 96%),
-                hsl(169, 26%, 78%, 0.85)
+                hsla(170, 26%, 78%, 0)
             ),
     url(assets/images/Designer.png);
     background-size: cover;
@@ -77,10 +76,10 @@ p {
     margin-bottom: 1rem;
 }
 
-.hero-content p {
-    color: var(--text-dark);
+.hero-content {
+    color: white;
     margin-bottom: 25px;
-    font-weight: 300;
+    font-weight: bolder;
 }
 
 /* BUTTON */
