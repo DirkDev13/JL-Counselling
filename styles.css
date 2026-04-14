@@ -124,9 +124,15 @@ p {
     border: 3px solid var(--secondary);
 }
 
-.subtitle {
+.subtitle, .location {
     color: var(--secondary);
-    margin-bottom: 15px;
+    margin: 0;
+    font-weight: bold;
+}
+
+.location{
+    font-style: italic;
+    font-weight: lighter;
 }
 
 
@@ -149,16 +155,7 @@ p {
 }
 
 
-.pillars-items{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--card-bg);
-    padding: 1.4rem;
-    border-radius: 0.6rem;
-    box-shadow: 0 3px 10px var(--border-soft);
-    gap: 1rem
-}
+
 
 /* TESTIMONIALS */
 .testimonials, .services, .social{
