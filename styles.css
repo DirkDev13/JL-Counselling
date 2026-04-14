@@ -287,7 +287,6 @@ footer {
     position: relative;
     display: flex;
     align-items: center;
-    background-color: var(--bg-primary);
     padding: 1rem 15rem 1rem 10rem;
 }
 
@@ -314,8 +313,6 @@ footer {
 .form-element{
     display: flex;
     flex-direction: column;
-
-
 }
 
 form{
