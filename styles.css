@@ -12,14 +12,14 @@
     --bg-secondary: hsl(57, 74%, 86%);    /* original cream */
     
     /* Cards + light surfaces */
-    --card-bg: hsl(57, 70%, 94%);         /* warm cream instead of white */
-    --bg-light: hsl(57, 70%, 96%);
+    --card-bg: hsl(57, 70%, 86%);         /* warm cream instead of white */
+    --bg-light: hsl(57, 70%, 93%);
 
     /* Text */
     --text-dark: hsl(180, 10%, 21%);
 
     /* UI */
-    --border-soft: rgba(0, 0, 0, 0.07);
+    --border-soft: rgba(0, 0, 0, 0.144);
 }
 
 
@@ -151,7 +151,7 @@ p {
     border-radius: 0.6rem;
     text-align: center;
     border-left: 4px solid var(--primary);
-    box-shadow: 0 3px 10px var(--border-soft);
+    box-shadow: 0 1rem 1rem var(--border-soft);
 }
 
 
@@ -169,7 +169,7 @@ p {
     margin: 1.4rem auto;
     border-radius: 1rem;
     max-width: 700px;
-    box-shadow: 0 4px 12px var(--border-soft);
+    box-shadow: 0 1rem 1rem var(--border-soft);
 }
 
 .testimonial span {
