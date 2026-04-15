@@ -58,7 +58,7 @@ p {
 .hero {
     position: relative;
     margin-top: 1rem;
-    height: 100svh;
+    height: 75svh;
     background: url(assets/images/Hero-background.jpeg);
     background-size: cover;
     background-position: center;
