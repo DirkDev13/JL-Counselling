@@ -106,6 +106,7 @@ p {
     display: flex;
     gap: 3rem;
     align-items: center;
+    font-size: 1.25rem;
 }
 
 .calendly-inline-widget {
