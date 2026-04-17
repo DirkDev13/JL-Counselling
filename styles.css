@@ -81,7 +81,7 @@ p {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0,0,0,0.15);
   z-index: 1;
 }
 /* BUTTON */
@@ -108,7 +108,7 @@ p {
     display: flex;
     gap: 3rem;
     align-items: center;
-    font-size: 1.25rem;
+
 }
 
 .calendly-inline-widget {
