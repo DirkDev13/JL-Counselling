@@ -64,9 +64,7 @@ p {
     background-position: center;
     background-repeat: no-repeat;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
 }
 
 .hero-content {
@@ -75,6 +73,7 @@ p {
     color: white;
     text-align: center;
     text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+    top: 20%;
 }
 
 .hero::before {
@@ -356,6 +355,16 @@ header{
 
     .formbox{
         margin: 1rem;
+    }
+
+    .hero{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .hero-content{
+        top: 0;
     }
 
 
