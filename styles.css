@@ -4,35 +4,115 @@
 
 :root {
     /* Brand colours */
-    --secondary: hsl(22, 76%, 55%);
-    --primary: hsl(188, 39%, 48%);
+    --primary: #2f7f7b;
 
     /* Backgrounds */
-    --bg-primary: hsl(169, 26%, 78%);     /* softened teal */
-    --bg-secondary: hsl(57, 74%, 86%);    /* original cream */
-    
-    /* Cards + light surfaces */
-    --card-bg: hsl(57, 70%, 86%);         /* warm cream instead of white */
-    --bg-light: hsl(57, 70%, 93%);
+    --bg-primary: #fff0cc;  
 
     /* Text */
-    --text-dark: hsl(180, 10%, 21%);
+    --text-dark: #000000;
+    --text-light: #ffffff;
 
-    /* UI */
-    --border-soft: rgba(0, 0, 0, 0.144);
+    /*Font*/
+    --main-font: "Abadi MT", "Abadi", sans-serif;
+
+
+    --card-bg: hsl(57, 70%, 86%);         
+    --bg-light: hsl(57, 70%, 93%);
+
+
+}
+
+.logo{
+    width: 10rem;
+    border-radius: 2rem;
+}
+
+body{
+    background-color: var(--bg-primary);
+    font-family: var(--main-font);
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    font-size: 1.5rem;
+}
+
+.navbar-items{
+    display: flex;
+    gap: 1rem;
+}
+
+a:hover{
+    color: var(--primary);
+    cursor: pointer;
+}
+
+.hero {
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--text-light);
+    text-align: center;
+    position: relative;
+    background: url(assets/images/Hero-background.jpg);
+    background-position: center 20%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-size: 3.0rem;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.1); /* Overlay for readability */
+}
+.hero-text {
+  position: relative;
+  z-index: 1;
+}
+
+.btn {
+    all: unset;
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 1.5rem 2.4rem;
+    border-radius: 3rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+    transition: 0.3s ease;
+    align-self: center;
+}
+
+.btn:hover {
+    background: var(--bg-primary);
+    color: var(--text-dark);
+}
+
+.counsel-areas{
+    display: flex;
+    gap: 5rem;
+    font-size: 1.5rem;
+    justify-content: center;
+    padding-top: 3rem;
 }
 
 
 
-
-/* GLOBAL */
+/* 
 body {
     margin: 0;
     padding: 0;
     background: var(--bg-light);
     color: var(--text-dark);
     font-family: "Abadi MT", "Abadi", sans-serif;
-    font-weight: 200; /* ExtraLight */
+    font-weight: 200; 
     line-height: 1.7;
     font-size: 1.25rem;
 }
@@ -57,12 +137,11 @@ p {
     font-size: 3rem
 }
 
-/* HERO */
 .hero {
     position: relative;
     margin-top: 1rem;
     height: 75svh;
-    background: url(assets/images/Hero-background.png);
+    background: url(assets/images/Hero-background.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -86,7 +165,7 @@ p {
   background: rgba(0,0,0,0.15);
   z-index: 1;
 }
-/* BUTTON */
+
 .btn {
     all: unset;
     background: var(--primary);
@@ -105,7 +184,7 @@ p {
     background: var(--secondary);
 }
 
-/* ABOUT */
+
 .about-content {
     display: flex;
     gap: 3rem;
@@ -139,7 +218,7 @@ p {
 }
 
 
-/* SERVICES */
+
 .service-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -160,7 +239,7 @@ p {
 
 
 
-/* TESTIMONIALS */
+
 .testimonials, .services, .social{
     text-align: center;
     padding: 4rem;
@@ -199,7 +278,7 @@ a:hover{
     cursor: pointer;
 }
 
-/* BOOKING */
+
 .booking {
     text-align: center;
     padding-bottom: 0;
@@ -207,7 +286,7 @@ a:hover{
 
 header{
     display: flex;
-    /* background-color: var(--bg-primary); */
+  
     padding-top: 1rem;
     padding-right: 15rem;
     padding-left: 10rem;
@@ -263,7 +342,7 @@ header{
     border-radius: 2rem;
 }
 
-/* FOOTER */
+
 footer {
     text-align: center;
     padding: 30px;
@@ -347,7 +426,7 @@ header{
     }
 
     .contact-header h1 {
-        position: static;      /* disable absolute centering */
+        position: static;      
         transform: none;
         margin-top: 1rem;
     }
@@ -378,4 +457,4 @@ header{
         font-size: 1rem;
     }
 
-}
+} */

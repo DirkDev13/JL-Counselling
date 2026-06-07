@@ -5,37 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Jane Lord Counselling</title>
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap">
+    <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap"> -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <!-- HERO -->
-
-    <header>
+    <header class="navbar">
         <img class="logo" src="assets/images/logo-transparent.png">
-        <div class="header-link-box">
-            <a class="header-link" onclick="scrollToAbout()">About</a>
-            <a class="header-link" onclick="scrollToSupport()">Areas of Support</a>
-            <a class="header-link" onclick="scrollToSocial()">Contact Us</a>
+        <div class="navbar-items">
+            <a class="navbar-item" onclick="scrollToAbout()">About</a>
+            <a class="navbar-item" onclick="scrollToSupport()">Areas of Support</a>
+            <a class="navbar-item" onclick="scrollToSupport()">Blog</a>
+            <a class="navbar-item" onclick="scrollToSocial()">Contact Us</a>
         </div>
-    </header>
-    <div class="hero" id="hero">
-        <div class="hero-content">
-            <h1 class="slogan">Helping Young People Navigate Life with Confidence and Resilience</h1>
-            <button class="btn" onclick="scrollToBooking()">Book a Session</button>
-        </div>
-    </div>
 
-    <!-- ABOUT -->
+    </header>
+
+  <section class="hero">
+    <div class="hero-text">
+      <h2>Rediscover Hope · Rebuild Purpose</h2>
+      <p>from wherever you are</p>
+      <button class="btn">Book a Session</button>
+      <ul class="counsel-areas">
+        <li>Trauma</li>
+        <li> Grief</li>
+        <li>Anger</li>
+        <li>Anxiety</li>
+        <li>Addiction</li>
+      </ul>
+    </div>
+  </section>
+
+<section id="about" class="about">
+    <h2>About</h2>
+    <p>Specialist Wellness Counsellor | BA Hons (Psychology) East London</p>
+    <p>Hi, I am Jane Lord... (bio text here)</p>
+  </section>
+
+
+ <!-- 
     <section class="about" id="about">
         <div class="about-content">
             <div class="portrait">
-                <img class="profile-photo" src="assets/images/Profile-photo.jpeg" alt="Profile photo">
+                <img class="profile-photo" src="assets/images/Profile-photo.jpg" alt="Profile photo">
             </div>
 
             <div class="about-text">
-                <!-- <h2>Hi, I am Jané Lord</h2> -->
+
                 <p class="subtitle">Specialist Welness Counsellor | BA Hons (Psychology)</p>
                 <p class="location">East London</p>
                 <p></p>
@@ -50,7 +65,7 @@
         </div>
     </section>
 
-    <!-- SERVICES -->
+
     <section class="services" id="support">
         <h2>Areas of Support</h2>
         <div class="service-grid">
@@ -61,7 +76,7 @@
             <div class="service-item">Social Media Addiction</div>
         </div>
     </section>
-    <!-- TESTIMONIALS -->
+
     <section class="testimonials">
         <h2>Testimonials</h2>
 
@@ -81,7 +96,7 @@
         </div>
     </section>
 
-    <!-- BOOKING -->
+
     <section class="booking" id="booking">
         <h2>Book a Session</h2>
 
@@ -92,7 +107,7 @@
          <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
     </section>
     
-    <!-- SOCIAL -->
+
      <section class="social" id="social">
         <h2>Contact Us</h2>
         <div class="social-box">
@@ -105,7 +120,7 @@
                 </div>
             </div>
         </div>
-     </section>
+     </section> -->
 
     <footer>
         © 2026 Jane Lord Counselling, all rights reserved
