@@ -113,16 +113,14 @@ a:hover{
     font-size: 3rem;
 }
 
-.about{
-    padding: 2rem 15rem;
+.about, .support{
+    padding: 2rem 12rem;
 }
 
 .about-content{
     display: flex;
     gap: 5rem;
 }
-
-
 
 .profile-photo{
     width: 50rem;
@@ -132,12 +130,12 @@ a:hover{
     border: 3px solid var(--secondary);
 }
 
-.about-subtitle, .about-location{
+.about-subtitle, .about-location, .support-subtitle{
     color: var(--primary);
     margin: 0;
 }
 
-.about-subtitle{
+.about-subtitle , .support-subtitle{
     font-size: 2rem;
     font-weight: bold;
 }
@@ -148,7 +146,7 @@ a:hover{
     margin-top: 0.5rem;
 }
 
-.about-text{
+.about-text, .support-text{
     font-size: 1.5rem;
     padding-bottom: 1rem;
     text-align: justify;
@@ -162,6 +160,31 @@ a:hover{
     border-radius: 3rem;
     font-size: 1.2rem;
     padding: 1rem 4rem;
+}
+
+.support-content{
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    text-align: center;
+
+}
+
+.support-pillar{
+    padding: 0.5rem 1rem;
+    width: 20rem;
+
+}
+
+.support-text{
+    text-align: center;
+}
+
+.support-icons{
+    height: 12rem;
+    width: 12rem;
+    border-radius: 50%;
+    margin-bottom: 2rem;
 }
 
 /* 
