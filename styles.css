@@ -28,6 +28,9 @@
     border-radius: 2rem;
 }
 
+header{
+    margin: 0;
+}
 body{
     background-color: var(--bg-primary);
     font-family: var(--main-font);
@@ -37,8 +40,9 @@ body{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 0rem 2rem;
     font-size: 1.5rem;
+    margin: 0;
 }
 
 .navbar-items{
@@ -64,6 +68,7 @@ a:hover{
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 3.0rem;
+    margin: 0;
 }
 
 .hero::after {
@@ -104,85 +109,63 @@ a:hover{
 }
 
 
+.section-heading{
+    font-size: 3rem;
+}
+
+.about{
+    padding: 2rem 15rem;
+}
+
+.about-content{
+    display: flex;
+    gap: 5rem;
+}
+
+
+
+.profile-photo{
+    width: 50rem;
+    height: 28rem;
+    object-fit: cover;
+    border-radius: 1rem;
+    border: 3px solid var(--secondary);
+}
+
+.about-subtitle, .about-location{
+    color: var(--primary);
+    margin: 0;
+}
+
+.about-subtitle{
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.about-location{
+    font-size: 1.5rem;
+    font-style: italic;
+    margin-top: 0.5rem;
+}
+
+.about-text{
+    font-size: 1.5rem;
+    padding-bottom: 1rem;
+    text-align: justify;
+}
+
+.learn-more-btn{
+    background-color: var(--bg-primary);
+    color: var(--primary);
+    border-color: var(--primary);
+    border: 0.2rem solid;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+    padding: 1rem 4rem;
+}
 
 /* 
-body {
-    margin: 0;
-    padding: 0;
-    background: var(--bg-light);
-    color: var(--text-dark);
-    font-family: "Abadi MT", "Abadi", sans-serif;
-    font-weight: 200; 
-    line-height: 1.7;
-    font-size: 1.25rem;
-}
 
-section {
-    max-width: 1200px;
-    margin: auto;
-    padding: 80px 25px;
-}
-
-h1, h2, label{
-    font-family: "Abadi MT", "Abadi", sans-serif;
-    font-weight: 600;
-    color: var(--secondary);
-}
-
-p {
-    margin-bottom: 1rem;
-}
-
-.slogan{
-    font-size: 3rem
-}
-
-.hero {
-    position: relative;
-    margin-top: 1rem;
-    height: 75svh;
-    background: url(assets/images/Hero-background.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    overflow: hidden;
-
-}
-
-.hero-content {
-    position: relative;
-    z-index: 2;
-    color: white;
-    text-align: center;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.6);
-    top: 20%;
-}
-
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.15);
-  z-index: 1;
-}
-
-.btn {
-    all: unset;
-    background: var(--primary);
-    color: white;
-    padding: 0.9rem 2.4rem;
-    border-radius: 3rem;
-    cursor: pointer;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    font-weight: 500;
-    transition: 0.3s ease;
-    align-self: center;
-}
-
-.btn:hover {
-    background: var(--secondary);
-}
 
 
 .about-content {
