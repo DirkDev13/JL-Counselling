@@ -53,6 +53,7 @@ body{
 a:hover{
     color: var(--primary);
     cursor: pointer;
+    transform: translateY(-5px) scale(1.03); 
 }
 
 .hero {
@@ -96,8 +97,8 @@ a:hover{
 }
 
 .btn:hover {
-    background: var(--bg-primary);
-    color: var(--text-dark);
+    transform: translateY(-5px) scale(1.03); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
 .counsel-areas{
@@ -236,6 +237,23 @@ a:hover{
 .contact-logo{
     width: 15rem;
     border-radius: 2rem;
+}
+
+.contact-socials{
+    display: flex;
+    justify-content: center;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+.social-logo{
+    width: 4rem;
+    height: 4rem;
+}
+
+.social-logo:hover{
+    cursor: pointer;
+    transform: translateY(-5px) scale(1.03); 
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 /* 
 
