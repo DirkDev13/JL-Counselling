@@ -7,8 +7,8 @@ function scrollToAbout() {
 function scrollToSupport() {
     document.getElementById("support").scrollIntoView({ behavior: "smooth" });
 }
-function scrollToSocial() {
-    document.getElementById("social").scrollIntoView({ behavior: "smooth" });
+function scrollToContact() {
+    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
 }
 function scrollToTop(){
     window.scrollTo({
