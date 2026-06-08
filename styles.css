@@ -23,7 +23,7 @@
 
 }
 
-.logo{
+.logo {
     width: 10rem;
     border-radius: 2rem;
 }
@@ -113,13 +113,14 @@ a:hover{
     font-size: 3rem;
 }
 
-.about, .support, .booking, .testimonials {
+.about, .support, .booking, .testimonials , .contact{
     padding: 2rem 12rem;
 }
 
 .about-content{
     display: flex;
     gap: 5rem;
+    justify-content: center;
 }
 
 .profile-photo{
@@ -215,87 +216,30 @@ a:hover{
     text-align: left;
 }
 
+.contact-photo{
+    width: 30rem;
+    border-radius: 4rem;
+}
 
+.contact{
+    margin-top: 5rem;
+    display: flex;
+    gap: 10rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-content{
+    text-align: center;
+}
+
+.contact-logo{
+    width: 15rem;
+    border-radius: 2rem;
+}
 /* 
 
 
-
-.about-content {
-    display: flex;
-    gap: 3rem;
-    align-items: center;
-
-}
-
-.calendly-inline-widget {
-  width: 100%;
-  min-width: 0;        
-  height: 60rem;       
-}
-
-.portrait img {
-    width: 280px;
-    height: 320px;
-    object-fit: cover;
-    border-radius: 1rem;
-    border: 3px solid var(--secondary);
-}
-
-.subtitle, .location {
-    color: var(--secondary);
-    margin: 0;
-    font-weight: bold;
-}
-
-.location{
-    font-style: italic;
-    font-weight: lighter;
-}
-
-
-
-.service-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-
-}
-
-.service-item{
-    background: var(--card-bg);
-    padding: 1.4rem;
-    border-radius: 0.6rem;
-    text-align: center;
-    border-left: 4px solid var(--primary);
-    box-shadow: 0 1rem 1rem var(--border-soft);
-}
-
-
-
-
-
-.testimonials, .services, .social{
-    text-align: center;
-    padding: 4rem;
-}
-
-.testimonial {
-    background: var(--card-bg);
-    padding: 1.5rem;
-    margin: 1.4rem auto;
-    border-radius: 1rem;
-    max-width: 700px;
-    box-shadow: 0 1rem 1rem var(--border-soft);
-}
-
-.testimonial span {
-    display: block;
-    margin-top: 12px;
-    color: var(--secondary);
-    font-size: 0.9rem;
-    font-style: italic;
-}
 
 .get-in-touch{
     color: var(--primary);
