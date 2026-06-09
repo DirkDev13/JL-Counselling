@@ -48,8 +48,13 @@ body{
 .navbar-items{
     display: flex;
     gap: 1rem;
+    
 }
 
+a{
+    text-decoration: none;
+    color: var(--text-dark);
+}
 a:hover{
     color: var(--primary);
     cursor: pointer;
@@ -255,97 +260,47 @@ a:hover{
     transform: translateY(-5px) scale(1.03); 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
-/* 
 
-
-
-.get-in-touch{
-    color: var(--primary);
-    font-weight: bolder;
-    border: 3px solid var(--primary);
-    border-radius: 1rem;
-}
-
-.get-in-touch:hover{
-    color: var(--secondary);
-    border: 3px solid var(--secondary);
-}
-
-a:hover{
-    cursor: pointer;
-}
-
-
-.booking {
-    text-align: center;
-    padding-bottom: 0;
-}
-
-header{
-    display: flex;
-  
-    padding-top: 1rem;
-    padding-right: 15rem;
-    padding-left: 10rem;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0;
-}
-
-
-
-.icons{
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-}
-
-.social{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.social-box{
-    padding: 2rem;
+ .formbox {
+    background: var(--bg-primary);
+    padding: 5rem;
+    margin: 1rem 10rem;
+    background: url(assets/images/contact-photo.jpg);
+    background-position: center 20%;
+    background-size: cover;
+    background-repeat: no-repeat;
     display: flex;
     justify-content: center;
+}
+
+.form-element{
+    display: flex;
+    flex-direction: column;
+    font-size: 1.5rem;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
     gap: 2rem;
-    background: var(--card-bg);
-    border-radius: 0.6rem;
-    box-shadow: 0 3px 10px var(--border-soft);
-    
+    width: 80%;
 }
 
-.social-icons{
-    width: 3rem;
-    height: 3rem;
+.h-captcha{
+    align-self: center;
 }
 
-.social-box-inner{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+textarea, input{
+    font-family: var(--main-font);
+    font-size: 1.5rem;
 }
 
-.social-icons-box{
-    display: flex;
-    gap: 1rem;
-    padding: 1rem;
+label{
+    color: var(--text-light);
+    font-family: var(--main-font);
 }
 
-.logo{
-    width: 10rem;
-    border-radius: 2rem;
-}
-
-
-footer {
-    text-align: center;
-    padding: 30px;
-    color: var(--text-dark);
-    background: var(--bg-secondary);
-}
+/* 
 
 .header-link-box{
     display: flex;
