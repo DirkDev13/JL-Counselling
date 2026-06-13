@@ -17,10 +17,10 @@ function scrollToTop(){
     });
 }
 
-//testimonials animation
+// testimonials animation
 const track = document.querySelector(".testimonials-track");
 const pillars = document.querySelectorAll(".testimonials-pillar");
-const visibleCount = 3;
+let visibleCount = window.innerWidth <= 768 ? 1 : 3; // 📱 mobile shows 1, desktop shows 3
 let index = 0;
 
 function moveTestimonials() {
@@ -32,4 +32,11 @@ function moveTestimonials() {
   track.style.transform = `translateX(${offset}%)`;
 }
 
-setInterval(moveTestimonials, 8000); // every 6 seconds
+// re-check visibleCount if window is resized
+window.addEventListener("resize", () => {
+  visibleCount = window.innerWidth <= 768 ? 1 : 3;
+  index = 0; // reset when switching layout
+  track.style.transform = "translateX(0%)";
+});
+
+setInterval(moveTestimonials, 6000); // every 8 seconds

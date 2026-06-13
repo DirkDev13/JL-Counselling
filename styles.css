@@ -344,12 +344,16 @@ label{
 }
 
 
+
+
 .blog-box{
-    padding: 1rem 5rem;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 1rem;
+  justify-items: center; 
 }
+
 
 .blog-post-heading{
     display: flex;
@@ -396,8 +400,7 @@ label{
     border-color: var(--primary);
     border: 0.2rem solid;
     border-radius: 3rem;
-    font-size: 1.2rem;
-    padding: 0.5rem 8rem;
+    padding: 0.5rem 1rem;
 }
 
 /* Blog Posts CSS*/
@@ -406,6 +409,7 @@ label{
     padding: 1rem 2rem;
     border: solid ;
     border-color: var(--primary);
+    display: grid;
 }
 .blogpost-container{
     display: flex;
@@ -423,5 +427,104 @@ label{
     border-bottom: solid;
     border-color: var(--primary);
     font-style: italic;
-    /* border-left: var(--text-dark); */
+}
+
+/* 📱 Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  
+  /* General body text */
+    body {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    /* Navbar */
+    .navbar {
+        gap: 1rem;
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+    .navbar-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Hero section */
+    .hero {
+        height: auto;
+        font-size: 1.5rem;
+        padding: 4rem 1rem;
+        border-radius: 2rem;
+    }
+
+    .counsel-areas{
+        gap: 1rem;
+        font-size: 1.25rem;
+        list-style: none;
+    }
+
+    /* About & Support sections */
+    .about, .support, .booking, .testimonials, .contact, .about-details {
+        padding: 2rem;
+    }
+    .about-content, .support-content, .about-block, .contact {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    .profile-photo, .about-photo, .contact-photo .blogpost-photo{
+        width: 100%;
+        height: auto;
+    }
+
+    /* Blog grid */
+    .blog-box {
+        grid-template-columns: 1fr; /* single column on mobile */
+        padding: 1rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+    .blog-post {
+        width: 100%;
+    }
+    .blog-thumbnail {
+        width: 100%;
+        height: auto;
+    }
+    .read-more-btn{
+        font-size: 1rem;
+    }
+
+    /* Testimonials */
+    .testimonials-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .testimonials-pillar {
+        flex: 0 0 100%;
+        height: auto;
+    }
+
+    /* Contact form */
+    .formbox {
+        margin: 1rem;
+        padding: 2rem;
+        flex-direction: column;
+    }
+    form {
+        width: 100%;
+    }
+
+    /*blog post*/
+    .blogpost-box{
+        margin: 0;
+    }
+    .blogpost-photo{
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+    }
+    .blogpost-container{
+        flex-direction: column;
+    }
 }
