@@ -23,6 +23,8 @@
 
 }
 
+/*Landing Page CSS*/
+
 .logo {
     width: 10rem;
     border-radius: 2rem;
@@ -129,7 +131,7 @@ a:hover{
     justify-content: center;
 }
 
-.profile-photo{
+.profile-photo, .about-photo{
     width: 50rem;
     height: 28rem;
     object-fit: cover;
@@ -261,6 +263,8 @@ a:hover{
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
 
+/*Contact Page CSS*/
+
  .formbox {
     background: var(--bg-primary);
     padding: 5rem;
@@ -300,113 +304,20 @@ label{
     font-family: var(--main-font);
 }
 
-/* 
+/* About Page CSS*/
 
-.header-link-box{
+.about-details{
+    padding: 2rem 20rem;
+}
+
+
+.about-block{
     display: flex;
-    gap: 1rem;
+    gap: 5rem;
     justify-content: center;
-}
-
-.header-link:hover{
-    color: var(--secondary);
-    text-decoration: underline;
-    text-underline-offset: 0.5rem;
-}
-
-.contact-header{
-    position: relative;
-    display: flex;
     align-items: center;
-    padding: 1rem 15rem 1rem 10rem;
+    padding-bottom: 1rem;
+
 }
 
 
-
-.contact-header h1 {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    margin: 0;
-}
-
-
- .formbox {
-    background: var(--card-bg);
-    padding: 1rem;
-    margin: 1rem 20rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    display: flex;
-    justify-content: center;
-}
-
-.form-element{
-    display: flex;
-    flex-direction: column;
-}
-
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    width: 80%;
-}
-
-.h-captcha{
-    align-self: center;
-}
-
-textarea{
-    font-family: 'Roboto', sans-serif;
-}
-
-@media (max-width: 768px) {
- .about-content, .social-box{
-    flex-wrap: wrap;
-  }
-header{
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-  }
-
-.contact-header {
-        flex-direction: column;
-        justify-content: center;
-        text-align: center;
-        padding: 2rem 1rem;
-    }
-
-    .contact-header h1 {
-        position: static;      
-        transform: none;
-        margin-top: 1rem;
-    }
-
-    .logo {
-        margin-bottom: 1rem;
-    }
-
-    .formbox{
-        margin: 1rem;
-    }
-
-    .hero{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    .hero-content{
-        top: 0;
-    }
-
-    .slogan{
-        font-size: 2rem
-    }
-
-    body{
-        font-size: 1rem;
-    }
-
-} */
