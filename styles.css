@@ -208,14 +208,27 @@ a:hover{
 }
 
 .testimonials-text{
-    height: 6rem;
+    height: 10rem;
 }
 
 .testimonials-content{
     gap: 15rem;
 }
+
+.testimonials-wrapper {
+  overflow: hidden;
+  width: 100%;
+}
+
+.testimonials-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
 .testimonials-pillar{
-    width: 25rem;
+  flex: 0 0 33.33%; /* 3 per row */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 .testimonials-initial{
