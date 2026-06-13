@@ -341,7 +341,6 @@ label{
     border-radius: 2rem;
     padding: 2rem;
     width: 25rem;
-    height: 25rem;
 }
 
 
@@ -372,6 +371,13 @@ label{
     font-style: italic;
 }
 
+.blog-thumbnail {
+    align-items: center;
+    width: 25rem;
+    height: 10rem;
+    padding-bottom: 1rem;
+}
+
 .blog-tag{
     all: unset;
     background: var(--primary);
@@ -392,4 +398,30 @@ label{
     border-radius: 3rem;
     font-size: 1.2rem;
     padding: 0.5rem 8rem;
+}
+
+/* Blog Posts CSS*/
+.blogpost-box{
+    margin: 2rem 12rem;
+    padding: 1rem 2rem;
+    border: solid ;
+    border-color: var(--primary);
+}
+.blogpost-container{
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+.blogpost-photo{
+    width: 40rem;
+    height: 20rem;
+}
+.blogpost-highlight{
+    text-align: center;
+    padding: 1rem;
+    border-top: solid;
+    border-bottom: solid;
+    border-color: var(--primary);
+    font-style: italic;
+    /* border-left: var(--text-dark); */
 }
