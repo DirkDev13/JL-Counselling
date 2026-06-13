@@ -441,7 +441,7 @@ label{
     /* Navbar */
     .navbar {
         gap: 1rem;
-        font-size: 1.2rem;
+        font-size: 1rem;
         padding: 1rem;
     }
     .navbar-items {
@@ -472,11 +472,10 @@ label{
         gap: 2rem;
         align-items: center;
     }
-    .profile-photo, .about-photo, .contact-photo .blogpost-photo{
+    .profile-photo, .about-photo, .contact-photo, .blogpost-photo{
         width: 100%;
         height: auto;
     }
-
     /* Blog grid */
     .blog-box {
         grid-template-columns: 1fr; /* single column on mobile */
