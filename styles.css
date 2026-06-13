@@ -454,12 +454,12 @@ label{
         height: auto;
         font-size: 1.5rem;
         padding: 4rem 1rem;
-        border-radius: 2rem;
+        display: flex;
     }
 
     .counsel-areas{
         gap: 1rem;
-        font-size: 1.25rem;
+        font-size: 1rem;
         list-style: none;
     }
 
