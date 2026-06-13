@@ -7,7 +7,7 @@
     --primary: #2f7f7b;
 
     /* Backgrounds */
-    --bg-primary: #fff0cc;  
+    --bg-primary: hsl(42, 100%, 90%);
 
     /* Text */
     --text-dark: #000000;
@@ -16,11 +16,7 @@
     /*Font*/
     --main-font: "Abadi MT", "Abadi", sans-serif;
 
-
-    --card-bg: hsl(57, 70%, 86%);         
-    --bg-light: hsl(57, 70%, 93%);
-
-
+    --bg-card: hsl(42, 50%, 90%);
 }
 
 /*Landing Page CSS*/
@@ -117,7 +113,7 @@ a:hover{
 }
 
 
-.section-heading{
+.section-heading , .blog-page-heading{
     font-size: 3rem;
 }
 
@@ -161,7 +157,7 @@ a:hover{
     text-align: justify;
 }
 
-.learn-more-btn{
+.learn-more-btn, .read-more-btn{
     background-color: var(--bg-primary);
     color: var(--primary);
     border-color: var(--primary);
@@ -333,4 +329,67 @@ label{
 
 }
 
+/*Blog page CSS*/
 
+.blog-page-heading{
+    text-align: center;
+}
+
+.blog-post{
+    background: var(--bg-card);
+    box-shadow: 8px 8px 16px rgba(0,0,0,0.2);
+    border-radius: 2rem;
+    padding: 2rem;
+    width: 25rem;
+    height: 25rem;
+}
+
+
+.blog-box{
+    padding: 1rem 5rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 2rem;
+}
+
+.blog-post-heading{
+    display: flex;
+    gap: 2rem;
+    font-size: 1.25rem;
+}
+
+.blog-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 1rem;
+}
+
+.blog-snippet{
+    font-size: 1.25rem;
+    text-align: justify;
+}
+.blog-date{
+    font-style: italic;
+}
+
+.blog-tag{
+    all: unset;
+    background: var(--primary);
+    color: var(--text-light);
+    padding: 0.5rem 1.2rem;
+    border-radius: 3rem;
+    font-size: 1.25rem;
+    transition: 0.3s ease;
+    align-self: center;
+}
+
+.read-more-btn{
+    font-size: 1.25rem;
+    background-color: var(--bg-card);
+    color: var(--primary);
+    border-color: var(--primary);
+    border: 0.2rem solid;
+    border-radius: 3rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 8rem;
+}
