@@ -40,3 +40,20 @@ window.addEventListener("resize", () => {
 });
 
 setInterval(moveTestimonials, 6000); // every 8 seconds
+
+function toggleText(buttonId, contentId) {
+    const button = document.getElementById(buttonId);
+    const content = document.getElementById(contentId);
+
+    button.addEventListener("click", () => {
+        content.classList.toggle("hidden");
+
+        if (content.classList.contains("hidden")) {
+            button.innerHTML = "Learn More &rarr;";
+        } else {
+            button.innerHTML = "&larr;";
+        }
+    });
+}
+
+toggleText("learn-more-btn", "extra-about-text");

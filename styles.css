@@ -129,6 +129,10 @@ a:hover{
     justify-content: center;
 }
 
+.hidden {
+    display: none;
+}
+
 .profile-photo, .about-photo{
     width: 50rem;
     height: 28rem;
