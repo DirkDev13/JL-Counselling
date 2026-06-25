@@ -488,7 +488,7 @@ label{
     .about, .support, .booking, .testimonials, .contact, .about-details {
         padding: 2rem;
     }
-    .about-content, .support-content, .about-block, .contact {
+    .about-content, .about-block, .contact {
         flex-direction: column;
         gap: 2rem;
         align-items: center;
@@ -496,6 +496,9 @@ label{
     .profile-photo, .about-photo, .contact-photo, .blogpost-photo{
         width: 100%;
         height: auto;
+    }
+    .support-content{
+          grid-template-columns: repeat(1, 1fr);
     }
     /* Blog grid */
     .blog-box {
