@@ -54,4 +54,20 @@ function toggleText(buttonId, contentId) {
     });
 }
 
+function toggleBooking(buttonId, contentId) {
+    const button = document.getElementById(buttonId);
+    const content = document.getElementById(contentId);
+
+    button.addEventListener("click", () => {
+        content.classList.toggle("hidden");
+
+        if (content.classList.contains("hidden")) {
+            button.innerHTML = "Book a Session";
+        } else {
+            button.innerHTML = "&larr;";
+        }
+    });
+}
+
 toggleText("learn-more-btn", "extra-about-text");
+toggleBooking("booking-btn", "booking-info")

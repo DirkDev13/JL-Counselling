@@ -101,9 +101,10 @@ a:hover{
     align-self: center;
 }
 
-.btn:hover {
+.btn:hover, .support-pillar:hover{
     transform: translateY(-5px) scale(1.03); 
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
 }
 
 .counsel-areas{
@@ -162,6 +163,9 @@ a:hover{
     padding-bottom: 1rem;
     text-align: justify;
 }
+.support-text{
+    padding-bottom:0 ;
+}
 
 .testimonials-text{
     text-align: left;
@@ -186,7 +190,7 @@ a:hover{
 }
 .support-content{
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
   margin-bottom: 1rem;
   justify-items: center; 
@@ -197,20 +201,28 @@ a:hover{
 }
 
 .support-pillar{
-    padding: 2rem 1rem;
+    padding: 1rem;
+    margin-bottom: 1rem;
     width: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-
 }
 
 
+
 .support-icons{
-    height: 20rem;
-    width: 20rem;
+    height: 15rem;
+    width: 15rem;
     border-radius: 50%;
     margin-bottom: 2rem;
+}
+
+.support-bookingbtn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 .booking {
