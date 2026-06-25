@@ -173,27 +173,38 @@ a:hover{
     padding: 1rem 4rem;
 }
 
-.support-content, .testimonials-content{
+ .testimonials-content{
     display: flex;
     gap: 2rem;
     justify-content: center;
     text-align: center;
 
 }
+.support-content{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-bottom: 1rem;
+  justify-items: center; 
+  justify-content: center;
+  align-items: center;
+  padding-right: 10rem;
+  padding-left: 10rem;
+}
 
 .support-pillar{
-    padding: 0.5rem 1rem;
+    padding: 2rem 1rem;
     width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
-.support-text{
-    text-align: center;
-}
 
 .support-icons{
-    height: 12rem;
-    width: 12rem;
+    height: 20rem;
+    width: 20rem;
     border-radius: 50%;
     margin-bottom: 2rem;
 }
