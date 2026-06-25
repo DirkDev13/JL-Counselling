@@ -334,21 +334,6 @@ label{
     font-family: var(--main-font);
 }
 
-/* About Page CSS*/
-
-.about-details{
-    padding: 2rem 20rem;
-}
-
-
-.about-block{
-    display: flex;
-    gap: 5rem;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 1rem;
-
-}
 
 /*Blog page CSS*/
 
