@@ -494,6 +494,9 @@ label{
     .support-content{
           grid-template-columns: repeat(1, 1fr);
     }
+    .support-pillar{
+        width: auto;
+}
     /* Blog grid */
     .blog-box {
         grid-template-columns: 1fr; /* single column on mobile */
