@@ -163,6 +163,10 @@ a:hover{
     text-align: justify;
 }
 
+.testimonials-text{
+    text-align: left;
+}
+
 .learn-more-btn, .read-more-btn{
     background-color: var(--bg-primary);
     color: var(--primary);
