@@ -161,7 +161,7 @@ a:hover{
 .about-text, .support-text, .testimonials-text{
     font-size: 1.5rem;
     padding-bottom: 1rem;
-    text-align: justify;
+    text-align: left;
 }
 .support-text{
     padding-bottom:0 ;
@@ -491,11 +491,20 @@ label{
         width: 100%;
         height: auto;
     }
-    .support-content{
-          grid-template-columns: repeat(1, 1fr);
-    }
-    .support-pillar{
-        width: auto;
+ .support-content {
+    grid-template-columns: 1fr;   /* single column */
+    justify-items: center;        /* center each pillar */
+    align-items: center;
+    padding: 0 1rem;              /* small, safe padding */
+    margin: 0 auto;               /* center container */
+    width: 100%;                  /* fit viewport */
+    box-sizing: border-box;       /* include padding in width */
+  }
+
+  .support-pillar {
+    width: 100%;                  /* stretch neatly */
+    max-width: 20rem;             /* optional cap */
+  }
 }
     /* Blog grid */
     .blog-box {
