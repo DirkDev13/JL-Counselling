@@ -456,6 +456,10 @@ label{
         padding: 0 1rem;
     }
 
+    .section-heading{
+        text-align: center;
+    }
+
     /* Navbar */
     .navbar {
         gap: 1rem;
