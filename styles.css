@@ -199,8 +199,8 @@ a:hover{
   justify-items: center; 
   justify-content: center;
   align-items: center;
-  padding-right: 10rem;
-  padding-left: 10rem;
+  /* padding-right: 10rem;
+  padding-left: 10rem; */
 }
 
 .support-pillar{
@@ -500,6 +500,11 @@ label{
     }
     .support-content{
           grid-template-columns: repeat(1, 1fr);
+    }
+    .support-pillar:hover{
+    transform: none; 
+    box-shadow: none;
+    cursor: default;
     }
     /* Blog grid */
     .blog-box {
