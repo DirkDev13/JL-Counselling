@@ -496,6 +496,9 @@ label{
         height: auto
     }
     .about-subtitle, .about-location{
+        font-size: 1.5rem;
+    }
+    .about-location{
         font-size: 1.25rem;
     }
     .about-text{
