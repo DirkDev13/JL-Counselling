@@ -505,7 +505,13 @@ label{
         font-size: 1rem;
     }
 
+    .learn-more-btn, .read-more-btn{
 
+    border: 0.2rem solid;
+    border-radius: 3rem;
+    font-size: 1rem;
+    padding: 0.5rem 1.75rem;
+    }
     /* About & Support sections */
     .about, .support, .booking, .testimonials, .contact, .about-details {
         padding: 2rem;
