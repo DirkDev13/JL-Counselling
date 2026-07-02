@@ -495,22 +495,26 @@ label{
         width: 15rem;
         height: auto
     }
-    .about-subtitle, .about-location{
+    .about-subtitle, .about-location, .support-subtitle{
         font-size: 1.5rem;
     }
     .about-location{
         font-size: 1.25rem;
     }
-    .about-text{
+    .about-text, .support-text{
         font-size: 1rem;
     }
 
     .learn-more-btn, .read-more-btn{
+        font-size: 1rem;
+        padding: 0.5rem 1.75rem;
+    }
 
-    border: 0.2rem solid;
-    border-radius: 3rem;
-    font-size: 1rem;
-    padding: 0.5rem 1.75rem;
+    .support-icons{
+        height: 10rem;
+        width: 10rem;
+        border-radius: 50%;
+        margin-bottom: 2rem;
     }
     /* About & Support sections */
     .about, .support, .booking, .testimonials, .contact, .about-details {
@@ -525,8 +529,13 @@ label{
         width: 100%;
         height: auto;
     }
+    .support-pillar{
+        margin: 0;
+        padding: 0;
+    }
     .support-content{
           grid-template-columns: repeat(1, 1fr);
+          gap:1rem;
     }
     .support-pillar:hover{
     transform: none; 
