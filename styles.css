@@ -491,7 +491,7 @@ label{
         list-style: none;
     }
 
-    .profile-photo{
+    .profile-photo, .contact-photo{
         width: 15rem;
         height: auto
     }
@@ -525,7 +525,7 @@ label{
         gap: 2rem;
         align-items: center;
     }
-     .about-photo, .contact-photo, .blogpost-photo{
+    .blogpost-photo{
         width: 100%;
         height: auto;
     }
@@ -573,6 +573,18 @@ label{
     .testimonials-text, .testimonials-initial{
         font-size: 1rem;
     }
+
+    .contact-photo{
+        width: 20rem;
+    }
+    .contact, .contact-socials{
+        margin: 0;
+        padding-top: 1rem;
+    }
+    .contact-logo{
+        padding-top: 1rem;
+    }
+
 
     /* Contact form */
     .formbox {
