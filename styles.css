@@ -570,6 +570,10 @@ label{
         height: auto;
     }
 
+    .testimonials-text, .testimonials-initial{
+        font-size: 1rem;
+    }
+
     /* Contact form */
     .formbox {
         margin: 1rem;
