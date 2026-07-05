@@ -362,8 +362,6 @@ label{
 }
 
 
-
-
 .blog-box{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -536,6 +534,10 @@ label{
     .support-content{
           grid-template-columns: repeat(1, 1fr);
           gap:1rem;
+    }
+    .social-logo{
+        width: 3rem;
+        height: 3rem;
     }
     .support-pillar:hover{
     transform: none; 
