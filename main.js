@@ -19,7 +19,7 @@ function scrollToTop(){
 const track = document.querySelector(".testimonials-track");
 const pillars = document.querySelectorAll(".testimonials-pillar");
 let index = 0;
-const visibleCount = 3;
+let visibleCount = window.innerWidth <= 768 ? 1 : 3; // 📱 mobile shows 1, desktop shows 3
 
 function updateSlide() {
   const offset = -(index * (100 / visibleCount));
@@ -42,8 +42,16 @@ document.getElementById("prev-btn").addEventListener("click", () => {
   updateSlide();
 });
 
+// Handle resize
+window.addEventListener("resize", () => {
+  visibleCount = window.innerWidth <= 768 ? 1 : 3;
+  index = 0; // reset when switching layout
+  updateSlide();
+});
+
 // Initial render
 updateSlide();
+
 
 
 
