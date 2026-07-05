@@ -493,7 +493,7 @@ label{
         width: 15rem;
         height: auto
     }
-    .about-subtitle, .about-location, .support-subtitle{
+    .about-subtitle, .about-location, .support-subtitle, .blog-page-heading{
         font-size: 1.5rem;
     }
     .about-location{
@@ -545,6 +545,13 @@ label{
     cursor: default;
     }
     /* Blog grid */
+
+    .blog-title{
+        font-size: 1.25rem;
+    }
+    .blog-snippet, .blog-date, .blog-tag{
+        font-size: 1rem;
+    }
     .blog-box {
         grid-template-columns: 1fr; /* single column on mobile */
         padding: 1rem;
