@@ -68,7 +68,7 @@ a:hover{
     text-align: center;
     position: relative;
     background: url(assets/images/Hero-background.jpg);
-    background-position: center 20%;
+    background-position: center 30%;
     background-size: cover;
     background-repeat: no-repeat;
     font-size: 3.0rem;
@@ -84,6 +84,7 @@ a:hover{
 .hero-text {
   position: relative;
   z-index: 1;
+  margin-top: 5rem;
 }
 
 
