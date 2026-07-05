@@ -242,18 +242,39 @@ a:hover{
 
 
 .testimonials-content{
-    gap: 15rem;
+    display: flex;
 }
 
 .testimonials-wrapper {
-  overflow: hidden;
+  position: relative;   /* allows absolute positioning inside */
   width: 100%;
+  overflow: hidden;     /* ✅ keeps only 3 visible */
 }
 
 .testimonials-track {
   display: flex;
   transition: transform 0.5s ease-in-out;
 }
+
+.testimonials-pillar {
+  flex: 0 0 33.33%;     /* exactly 3 per row */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.btn.prev-btn,
+.btn.next-btn {
+  top: 50%;                  /* center vertically */
+  transform: translateY(-50%);
+  background: var(--primary); /* style as you like */
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+
+
+
 
 .testimonials-pillar{
   flex: 0 0 33.33%; /* 3 per row */
