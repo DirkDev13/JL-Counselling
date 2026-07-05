@@ -597,6 +597,9 @@ label{
     form {
         width: 100%;
     }
+    .form-element, textarea, input{
+        font-size: 1rem;
+    }
 
     /*blog post*/
     .blogpost-box{
