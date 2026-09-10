@@ -470,8 +470,8 @@ label{
     height: 20rem;
 }
 .blogpost2-photo{
-    width: 400px;
-    height: 400px;
+    width: auto;
+    height: auto;
 }
 .blogpost-highlight{
     text-align: center;
@@ -560,7 +560,7 @@ label{
         gap: 2rem;
         align-items: center;
     }
-    .blogpost-photo{
+    .blogpost-photo, .blogpost2-photo{
         width: 100%;
         height: auto;
     }
