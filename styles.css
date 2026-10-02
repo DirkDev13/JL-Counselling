@@ -118,6 +118,10 @@ textarea:focus-visible {
     cursor: pointer;
 }
 
+.btn:hover {
+    color: var(--text-light);
+}
+
 .counsel-areas{
     display: flex;
     gap: 5rem;
