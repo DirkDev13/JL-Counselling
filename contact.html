@@ -3,50 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Get in touch with Jane Lord Counselling to book a session or ask a question about support for children, teens, adults, and families." />
   <title>Get in Touch | Jané Lord Counselling</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
+<body>
     <header class="navbar">
-        <img class="logo" src="assets/images/logo-transparent.png">
+        <img class="logo" src="assets/images/logo-transparent.png" alt="Jane Lord Counselling logo">
         <div class="navbar-items">
             <a class="navbar-item" href="index.html">Home</a>
             <a class="navbar-item" href="blog.html">Blog</a>
         </div>
     </header>
-<body>
   <div class="formbox"> 
-    <form action="https://api.web3forms.com/submit" method="POST">
+    <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="808c60c1-dd63-4871-ba20-739e8029a86d">
       <div class="form-element">
-        <Label>Name</Label>
-        <input type="text" name="name" required>
+        <label for="name">Name</label>
+        <input id="name" type="text" name="name" required>
       </div>
 
       <div class="form-element">
-        <label>Email</label>
-        <input type="email" name="email" required>
+        <label for="email">Email</label>
+        <input id="email" type="email" name="email" required>
       </div>
     
       <div class="form-element">
-        <label>Message</label>
-        <textarea name="message" rows="25" required></textarea>
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="25" required></textarea>
       </div>
-      <form>
 
       <div class="h-captcha" data-captcha="true"></div>
 
       <button class="btn" type="submit">Send Message</button>
     </form>
   </div>
-</body>
+
 <footer>
     © 2026 Jane Lord Counselling, all rights reserved
 </footer>
 <script src="https://web3forms.com/client/script.js" async defer></script>
 <script>
-  const form = document.getElementById('form');
+  const form = document.getElementById('contact-form');
   const submitBtn = form.querySelector('button[type="submit"]');
 
   form.addEventListener('submit', async (e) => {
@@ -83,5 +83,5 @@
       }
   });
 </script>
-
+</body>
 </html>
