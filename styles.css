@@ -112,13 +112,18 @@ textarea:focus-visible {
     text-align: center;
 }
 
-.btn:hover, .support-pillar:hover{
-    transform: translateY(-5px) scale(1.03); 
+.btn:hover {
+    transform: scale(1.03);
+    cursor: pointer;
+}
+
+.support-pillar:hover{
+    transform: translateY(-5px) scale(1.03);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
     cursor: pointer;
 }
 
-.btn:hover {
+a.btn:hover {
     color: var(--text-light);
 }
 
