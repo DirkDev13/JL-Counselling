@@ -505,12 +505,16 @@ label{
     width: 100%;
 }
 .blogpost-photo{
-    width: 40rem;
+    width: min(100%, 40rem);
     height: 20rem;
+    object-fit: cover;
+    display: block;
 }
 .blogpost2-photo{
-    width: auto;
+    width: min(100%, 420px);
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 .blogpost-highlight{
     text-align: center;
@@ -614,6 +618,7 @@ label{
     }
     .blogpost-photo, .blogpost2-photo{
         width: 100%;
+        max-width: 100%;
         height: auto;
         margin-top: 0.5rem;
     }
