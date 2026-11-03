@@ -1084,6 +1084,11 @@ footer {
     section[id] {
         scroll-margin-top: 5rem;
     }
+    /* Keep the footer text clear of the back-to-top button in the corner */
+    footer {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
     .support-subtitle {
         font-size: min(1.5rem, 10cqi);
     }
