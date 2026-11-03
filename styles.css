@@ -32,6 +32,7 @@ header{
 body{
     background-color: var(--bg-primary);
     font-family: var(--main-font);
+    margin: 0;
 }
 
 .navbar{
@@ -124,10 +125,12 @@ textarea:focus-visible {
 
 .counsel-areas{
     display: flex;
-    gap: 5rem;
+    flex-wrap: wrap;
+    gap: 1rem 5rem;
     font-size: 1.5rem;
     justify-content: center;
-    padding-top: 3rem;
+    padding: 3rem 0 0;
+    margin: 0;
 }
 
 
@@ -136,7 +139,7 @@ textarea:focus-visible {
 }
 
 .about, .support, .booking, .testimonials , .contact{
-    padding: 2rem 12rem;
+    padding: 2rem clamp(1.5rem, 8vw, 12rem);
 }
 
 .about-content{
@@ -221,7 +224,11 @@ textarea:focus-visible {
 .support-pillar{
     padding: 1rem;
     margin-bottom: 1rem;
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,21 +274,24 @@ textarea:focus-visible {
 
 .testimonials-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .testimonials-pillar {
-  flex: 0 0 33.33%;     /* exactly 3 per row */
+  flex: 0 0 calc(100% / var(--per-view, 3)); /* set by main.js */
   padding: 1rem;
   box-sizing: border-box;
 }
 
 .btn.prev-btn,
 .btn.next-btn {
-  top: 50%;                  /* center vertically */
-  transform: translateY(-50%);
-  background: var(--primary); /* style as you like */
-  padding: 0.5rem 1rem;
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
   cursor: pointer;
   border-radius: 50%;
 }
@@ -289,12 +299,6 @@ textarea:focus-visible {
 
 
 
-
-.testimonials-pillar{
-  flex: 0 0 33.33%; /* 3 per row */
-  padding: 1rem;
-  box-sizing: border-box;
-}
 
 .testimonials-initial{
     font-size: 1.5rem;
@@ -517,8 +521,10 @@ label{
         padding: 1rem;
     }
     .navbar-items {
-        flex-direction: column;
-        align-items: center;
+        gap: 0.75rem;
+    }
+    .logo {
+        width: 5rem;
     }
 
     /* Hero section */
@@ -625,7 +631,6 @@ label{
         gap: 1rem;
     }
     .testimonials-pillar {
-        flex: 0 0 100%;
         height: auto;
     }
 
@@ -669,5 +674,331 @@ label{
     }
     .blogpost-container{
         flex-direction: column;
+    }
+}
+
+/* ============================================================
+   Motion & UX enhancements
+   (layout/motion only — uses the existing colour tokens)
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Keep section headings clear of the sticky header when jumping to them */
+section[id] {
+    scroll-margin-top: 7rem;
+}
+
+/* Sticky header that condenses once you scroll */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-primary);
+    transition: box-shadow 0.3s ease;
+}
+
+.logo {
+    transition: width 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled .logo {
+    width: 6rem;
+}
+
+/* Nav links: underline grows in on hover / for the section in view */
+.navbar-item {
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.25s ease;
+}
+
+.navbar-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.navbar-item:hover::after,
+.navbar-item:focus-visible::after,
+.navbar-item.active::after {
+    transform: scaleX(1);
+}
+
+.navbar-item.active {
+    color: var(--primary);
+}
+
+/* Buttons: tactile press feedback */
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+/* Smooth expand / collapse (Learn More + booking calendar) */
+.collapsible {
+    scroll-margin-top: 8rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.5s ease, opacity 0.4s ease;
+}
+
+.collapsible.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.collapsible-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Session cards are clickable (they open the calendar) */
+.support-pillar:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
+.support-pillar:focus-visible,
+.support-pillar:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.support-icons {
+    transition: transform 0.4s ease;
+}
+
+.support-pillar:hover .support-icons {
+    transform: scale(1.04);
+}
+
+/* Testimonials: swipeable track + dots */
+.testimonials-content {
+    align-items: center;
+}
+
+.testimonials-wrapper {
+    touch-action: pan-y;
+    cursor: grab;
+    border-radius: 1.5rem;
+    transition: height 0.4s ease;
+}
+
+.testimonials-track {
+    align-items: flex-start;
+}
+
+.testimonials-wrapper:active {
+    cursor: grabbing;
+}
+
+.testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+}
+
+.testimonials-dot {
+    all: unset;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.testimonials-dot::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1rem;
+    background: var(--primary);
+    opacity: 0.3;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.testimonials-dot.active::before {
+    width: 1.5rem;
+    opacity: 1;
+}
+
+.testimonials-dot:focus-visible {
+    outline: 3px solid var(--primary);
+    border-radius: 1rem;
+}
+
+/* Social icons */
+.social-logo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+}
+
+/* Blog cards lift on hover */
+.blog-box {
+    padding: 1rem clamp(1rem, 4vw, 4rem);
+}
+
+.blog-post {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-6px);
+    box-shadow: 12px 14px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Contact form: inline status instead of browser alerts */
+.form-status {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+    background: var(--bg-card);
+    color: var(--primary);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.visible {
+    padding: 1rem;
+    opacity: 1;
+    transform: none;
+}
+
+.form-status.error {
+    color: var(--text-dark);
+}
+
+/* Back to top */
+.back-to-top {
+    all: unset;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 90;
+    width: 3.25rem;
+    height: 3.25rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.back-to-top.visible:hover {
+    transform: translateY(-3px);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+footer {
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+/* Tablet / small laptop: the gap between the phone and desktop layouts */
+@media (min-width: 769px) and (max-width: 1100px) {
+    .support-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .profile-photo {
+        width: 100%;
+        max-width: 40rem;
+    }
+    .contact {
+        gap: 4rem;
+    }
+    .contact-photo {
+        width: 22rem;
+    }
+    .counsel-areas {
+        gap: 1rem 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar.scrolled {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .navbar.scrolled .logo {
+        width: 3.5rem;
+    }
+    section[id] {
+        scroll-margin-top: 5rem;
+    }
+    .back-to-top {
+        right: 1rem;
+        bottom: 1rem;
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}
+
+/* Respect "reduce motion": no transitions, no hover lifts */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .btn:hover,
+    .support-pillar:hover,
+    .support-pillar:focus-visible,
+    .blog-post:hover,
+    .social-logo:hover {
+        transform: none;
     }
 }

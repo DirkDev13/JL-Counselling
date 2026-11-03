@@ -1,113 +1,236 @@
-function scrollToBooking() {
-    document.getElementById("booking").scrollIntoView({ behavior: "smooth" });
-}
-function scrollToAbout() {
-    document.getElementById("about").scrollIntoView({ behavior: "smooth" });
-}
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-function scrollToContact() {
-    document.getElementById("contact").scrollIntoView({ behavior: "smooth" });
-}
-function scrollToTop(){
+function scrollToTop() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: prefersReducedMotion ? "auto" : "smooth"
     });
 }
 
 
+// Sticky header: condense + shadow once the page is scrolled
+const navbar = document.querySelector(".navbar");
+const backToTopBtn = document.getElementById("back-to-top");
+
+function onScroll() {
+    const y = window.scrollY;
+    if (navbar) navbar.classList.toggle("scrolled", y > 20);
+    if (backToTopBtn) backToTopBtn.classList.toggle("visible", y > 600);
+}
+
+window.addEventListener("scroll", onScroll, { passive: true });
+onScroll();
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener("click", scrollToTop);
+}
+
+
+// Highlight the nav link for the section currently in view
+const navLinks = document.querySelectorAll('.navbar-item[href^="#"]');
+
+if (navLinks.length && "IntersectionObserver" in window) {
+    const spy = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            const link = document.querySelector(`.navbar-item[href="#${entry.target.id}"]`);
+            if (link) link.classList.toggle("active", entry.isIntersecting);
+        });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+
+    navLinks.forEach((link) => {
+        const section = document.querySelector(link.getAttribute("href"));
+        if (section) spy.observe(section);
+    });
+}
+
+
+// Testimonials carousel
 const track = document.querySelector(".testimonials-track");
-const pillars = document.querySelectorAll(".testimonials-pillar");
-let index = 0;
-let visibleCount = window.innerWidth <= 768 ? 1 : 3; // 📱 mobile shows 1, desktop shows 3
 
-function updateSlide() {
-  const offset = -(index * (100 / visibleCount));
-  track.style.transform = `translateX(${offset}%)`;
+if (track) {
+    const wrapper = document.querySelector(".testimonials-wrapper");
+    const pillars = track.querySelectorAll(".testimonials-pillar");
+    const dotsContainer = document.querySelector(".testimonials-dots");
+    let index = 0;
+    let visibleCount = getVisibleCount();
+
+    function getVisibleCount() {
+        if (window.innerWidth <= 768) return 1; // 📱 mobile shows 1
+        if (window.innerWidth <= 1100) return 2; // tablet shows 2
+        return 3; // desktop shows 3
+    }
+
+    function maxIndex() {
+        return Math.max(0, pillars.length - visibleCount);
+    }
+
+    function buildDots() {
+        if (!dotsContainer) return;
+        dotsContainer.innerHTML = "";
+        for (let i = 0; i <= maxIndex(); i++) {
+            const dot = document.createElement("button");
+            dot.className = "testimonials-dot";
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Show testimonial ${i + 1}`);
+            dot.addEventListener("click", () => goTo(i));
+            dotsContainer.appendChild(dot);
+        }
+    }
+
+    function updateSlide() {
+        track.style.setProperty("--per-view", visibleCount);
+        const offset = -(index * (100 / visibleCount));
+        track.style.transform = `translateX(${offset}%)`;
+
+        // Size the carousel to the cards in view so short quotes don't leave a gap
+        let tallest = 0;
+        pillars.forEach((pillar, i) => {
+            const inView = i >= index && i < index + visibleCount;
+            pillar.setAttribute("aria-hidden", String(!inView));
+            if (inView) tallest = Math.max(tallest, pillar.offsetHeight);
+        });
+        wrapper.style.height = `${tallest}px`;
+
+        if (dotsContainer) {
+            dotsContainer.querySelectorAll(".testimonials-dot").forEach((dot, i) => {
+                dot.classList.toggle("active", i === index);
+                dot.setAttribute("aria-current", i === index ? "true" : "false");
+            });
+        }
+    }
+
+    function goTo(i) {
+        const last = maxIndex();
+        if (i > last) i = 0; // wrap back to start
+        if (i < 0) i = last; // wrap to last full window
+        index = i;
+        updateSlide();
+    }
+
+    document.getElementById("next-btn").addEventListener("click", () => goTo(index + 1));
+    document.getElementById("prev-btn").addEventListener("click", () => goTo(index - 1));
+
+    // Arrow keys when the carousel has focus
+    wrapper.addEventListener("keydown", (e) => {
+        if (e.key === "ArrowRight") goTo(index + 1);
+        if (e.key === "ArrowLeft") goTo(index - 1);
+    });
+
+    // Swipe on touch screens
+    let startX = null;
+    wrapper.addEventListener("pointerdown", (e) => { startX = e.clientX; });
+    wrapper.addEventListener("pointerup", (e) => {
+        if (startX === null) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 40) goTo(dx < 0 ? index + 1 : index - 1);
+        startX = null;
+    });
+
+    // Handle resize: rebuild the dots only when the layout actually changes
+    window.addEventListener("resize", () => {
+        const next = getVisibleCount();
+        if (next !== visibleCount) {
+            visibleCount = next;
+            index = Math.min(index, maxIndex());
+            buildDots();
+        }
+        updateSlide();
+    });
+
+    // Initial render
+    buildDots();
+    updateSlide();
 }
 
-document.getElementById("next-btn").addEventListener("click", () => {
-  index++;
-  if (index > pillars.length - visibleCount) {
-    index = 0; // wrap back to start
-  }
-  updateSlide();
-});
 
-document.getElementById("prev-btn").addEventListener("click", () => {
-  index--;
-  if (index < 0) {
-    index = pillars.length - visibleCount; // wrap to last full window
-  }
-  updateSlide();
-});
-
-// Handle resize
-window.addEventListener("resize", () => {
-  visibleCount = window.innerWidth <= 768 ? 1 : 3;
-  index = 0; // reset when switching layout
-  updateSlide();
-});
-
-// Initial render
-updateSlide();
-
-
-
-
-// // testimonials animation
-// const track = document.querySelector(".testimonials-track");
-// const pillars = document.querySelectorAll(".testimonials-pillar");
-// let visibleCount = window.innerWidth <= 768 ? 1 : 3; // 📱 mobile shows 1, desktop shows 3
-// let index = 0;
-
-// function moveTestimonials() {
-//   index++;
-//   if (index > pillars.length - visibleCount) {
-//     index = 0; // reset to start
-//   }
-//   const offset = -(index * (100 / visibleCount));
-//   track.style.transform = `translateX(${offset}%)`;
-// }
-
-// // re-check visibleCount if window is resized
-// window.addEventListener("resize", () => {
-//   visibleCount = window.innerWidth <= 768 ? 1 : 3;
-//   index = 0; // reset when switching layout
-//   track.style.transform = "translateX(0%)";
-// });
-
-// setInterval(moveTestimonials, 6000); // every 8 seconds
-
-function toggleText(buttonId, contentId) {
+// Expand / collapse panels with a smooth height animation (see .collapsible in styles.css)
+function setupToggle(buttonId, contentId, openLabel, closedLabel, onOpen) {
     const button = document.getElementById(buttonId);
     const content = document.getElementById(contentId);
+    if (!button || !content) return null;
+
+    content.inert = true;
+
+    function setOpen(open) {
+        content.classList.toggle("open", open);
+        content.inert = !open;
+        button.setAttribute("aria-expanded", String(open));
+        button.innerHTML = open ? openLabel : closedLabel;
+        if (open && onOpen) onOpen(content);
+    }
 
     button.addEventListener("click", () => {
-        content.classList.toggle("hidden");
-
-        if (content.classList.contains("hidden")) {
-            button.innerHTML = "Learn More &rarr;";
-        } else {
-            button.innerHTML = "&larr;";
-        }
+        setOpen(!content.classList.contains("open"));
     });
+
+    return setOpen;
 }
 
-function toggleBooking(buttonId, contentId) {
-    const button = document.getElementById(buttonId);
-    const content = document.getElementById(contentId);
+setupToggle("learn-more-btn", "extra-about-text", "Show Less &uarr;", "Learn More &rarr;");
 
-    button.addEventListener("click", () => {
-        content.classList.toggle("hidden");
+const setBookingOpen = setupToggle("booking-btn", "booking-info", "Hide Calendar &uarr;", "Book a Session", (content) => {
+    // Wait for the panel to start expanding, then bring the calendar into view
+    setTimeout(() => {
+        content.scrollIntoView({ behavior: prefersReducedMotion ? "auto" : "smooth", block: "start" });
+    }, 150);
+});
 
-        if (content.classList.contains("hidden")) {
-            button.innerHTML = "Book a Session";
-        } else {
-            button.innerHTML = "&larr;";
+// Clicking a session card opens the booking calendar
+document.querySelectorAll(".support-pillar").forEach((pillar) => {
+    function open() {
+        if (setBookingOpen) setBookingOpen(true);
+    }
+    pillar.addEventListener("click", open);
+    pillar.addEventListener("keydown", (e) => {
+        if (e.key === "Enter" || e.key === " ") {
+            e.preventDefault();
+            open();
         }
     });
-}
+});
 
-toggleText("learn-more-btn", "extra-about-text");
-toggleBooking("booking-btn", "booking-info")
+
+// Motion: entrance + scroll reveals (GSAP). Skipped entirely for reduced motion
+// or if GSAP failed to load, so content is always visible without it.
+if (window.gsap && window.ScrollTrigger && !prefersReducedMotion) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Hero entrance
+    const heroText = document.querySelector(".hero-text");
+    if (heroText) {
+        gsap.timeline({ defaults: { ease: "power2.out" } })
+            .from(".hero-text h2", { opacity: 0, y: 24, duration: 0.9 })
+            .from(".hero-text p", { opacity: 0, y: 16, duration: 0.7 }, "-=0.5")
+            .from(".hero-text .btn", { opacity: 0, y: 16, duration: 0.6 }, "-=0.4")
+            .from(".counsel-areas li", { opacity: 0, y: 10, duration: 0.5, stagger: 0.08 }, "-=0.3");
+    }
+
+    // Gentle fade-up as each block scrolls into view
+    gsap.utils.toArray(".section-heading, .blog-page-heading, .about-content, .testimonials-content, .contact-photo, .contact-content, .support-bookingbtn, .formbox").forEach((el) => {
+        gsap.from(el, {
+            opacity: 0,
+            y: 16,
+            duration: 0.6,
+            ease: "power1.out",
+            scrollTrigger: { trigger: el, start: "top 88%", once: true }
+        });
+    });
+
+    // Session cards and blog cards come in one after another
+    [".support-pillar", ".blog-post"].forEach((selector) => {
+        if (!document.querySelector(selector)) return;
+        gsap.set(selector, { opacity: 0, y: 20 });
+        ScrollTrigger.batch(selector, {
+            start: "top 90%",
+            once: true,
+            onEnter: (batch) => gsap.to(batch, {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: "power2.out",
+                stagger: 0.1,
+                clearProps: "transform" // hand hover transforms back to CSS
+            })
+        });
+    });
+}
