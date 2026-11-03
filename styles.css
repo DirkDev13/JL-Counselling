@@ -888,6 +888,49 @@ section[id] {
     border-radius: 1rem;
 }
 
+/* Blog photos: one 4:3 frame everywhere (cards and articles), cropped to
+   fill rather than stretched, so wide and portrait photos look the same */
+.blog-thumbnail,
+.blogpost-photo,
+.blogpost2-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.blog-thumbnail {
+    margin: 1rem 0;
+}
+
+/* In articles the photo sits beside the text on wider screens */
+.blogpost-photo,
+.blogpost2-photo {
+    flex: 0 1 40%;
+    width: 40%;
+    max-width: 30rem; /* the source photos are small; don't blow them up */
+}
+
+/* Keep the face in frame when a portrait photo is cropped */
+.photo-focus-top {
+    object-position: center 25%;
+}
+
+/* Article box scales its side margins like the other sections */
+.blogpost-box {
+    margin: 2rem clamp(1rem, 8vw, 12rem);
+}
+
+/* Long blog titles grow instead of being cut off */
+.blog-title,
+.blog-snippet {
+    height: auto;
+    min-height: 5.5rem;
+    overflow: visible;
+}
+
 /* Blog cards lift on hover */
 .blog-box {
     padding: 1rem clamp(1rem, 4vw, 4rem);
@@ -1015,6 +1058,32 @@ footer {
     }
     .support-subtitle {
         font-size: min(1.5rem, 10cqi);
+    }
+    /* Blog: photos full width, cards and article box clear of the screen edges */
+    .blogpost-photo,
+    .blogpost2-photo {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 32rem;
+        margin: 0 auto 1rem;
+    }
+    .blog-box {
+        margin: 0;
+        padding: 1rem;
+    }
+    .blog-post {
+        box-sizing: border-box;
+        max-width: 32rem;
+        padding: 1.25rem;
+    }
+    .blog-title,
+    .blog-snippet {
+        min-height: 0;
+    }
+    .blogpost-box {
+        margin: 0 1rem 2rem;
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
     }
     .back-to-top {
         right: 1rem;
