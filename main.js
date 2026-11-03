@@ -11,10 +11,18 @@ function scrollToTop() {
 // Sticky header: condense + shadow once the page is scrolled
 const navbar = document.querySelector(".navbar");
 const backToTopBtn = document.getElementById("back-to-top");
+let navCondensed = false;
 
 function onScroll() {
     const y = window.scrollY;
-    if (navbar) navbar.classList.toggle("scrolled", y > 20);
+
+    // Condensing makes the header shorter, which shifts the page and the scroll
+    // position. Separate on/off thresholds (further apart than that shift) stop
+    // it flickering between the two states near the top of the page.
+    if (!navCondensed && y > 120) navCondensed = true;
+    else if (navCondensed && y < 10) navCondensed = false;
+
+    if (navbar) navbar.classList.toggle("scrolled", navCondensed);
     if (backToTopBtn) backToTopBtn.classList.toggle("visible", y > 600);
 }
 
@@ -192,24 +200,41 @@ document.querySelectorAll(".support-pillar").forEach((pillar) => {
 
 // Motion: entrance + scroll reveals (GSAP). Skipped entirely for reduced motion
 // or if GSAP failed to load, so content is always visible without it.
-if (window.gsap && window.ScrollTrigger && !prefersReducedMotion) {
+const motionEnabled = window.gsap && window.ScrollTrigger && !prefersReducedMotion;
+
+// GSAP owns opacity/transform while it animates: CSS transitions on the same
+// properties fight it (and can leave elements stuck invisible), so .motion-pending
+// switches them off until the tween is done and its inline styles are cleared.
+function animate(targets, fromVars, toVars, position, timeline) {
+    const els = gsap.utils.toArray(targets);
+    els.forEach((el) => el.classList.add("motion-pending"));
+    const vars = {
+        ...toVars,
+        clearProps: "opacity,transform", // hand hover transforms back to CSS
+        onComplete: () => els.forEach((el) => el.classList.remove("motion-pending"))
+    };
+    return timeline
+        ? timeline.fromTo(els, fromVars, vars, position)
+        : gsap.fromTo(els, fromVars, vars);
+}
+
+if (motionEnabled) {
     gsap.registerPlugin(ScrollTrigger);
 
     // Hero entrance
-    const heroText = document.querySelector(".hero-text");
-    if (heroText) {
-        gsap.timeline({ defaults: { ease: "power2.out" } })
-            .from(".hero-text h2", { opacity: 0, y: 24, duration: 0.9 })
-            .from(".hero-text p", { opacity: 0, y: 16, duration: 0.7 }, "-=0.5")
-            .from(".hero-text .btn", { opacity: 0, y: 16, duration: 0.6 }, "-=0.4")
-            .from(".counsel-areas li", { opacity: 0, y: 10, duration: 0.5, stagger: 0.08 }, "-=0.3");
+    if (document.querySelector(".hero-text")) {
+        const hero = gsap.timeline({ defaults: { ease: "power2.out" } });
+        animate(".hero-text h2", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.9 }, 0, hero);
+        animate(".hero-text p", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.7 }, "-=0.5", hero);
+        animate(".hero-text .btn", { opacity: 0, y: 16 }, { opacity: 1, y: 0, duration: 0.6 }, "-=0.4", hero);
+        animate(".counsel-areas li", { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.5, stagger: 0.08 }, "-=0.3", hero);
     }
 
     // Gentle fade-up as each block scrolls into view
     gsap.utils.toArray(".section-heading, .blog-page-heading, .about-content, .testimonials-content, .contact-photo, .contact-content, .support-bookingbtn, .formbox").forEach((el) => {
-        gsap.from(el, {
-            opacity: 0,
-            y: 16,
+        animate(el, { opacity: 0, y: 16 }, {
+            opacity: 1,
+            y: 0,
             duration: 0.6,
             ease: "power1.out",
             scrollTrigger: { trigger: el, start: "top 88%", once: true }
@@ -219,18 +244,22 @@ if (window.gsap && window.ScrollTrigger && !prefersReducedMotion) {
     // Session cards and blog cards come in one after another
     [".support-pillar", ".blog-post"].forEach((selector) => {
         if (!document.querySelector(selector)) return;
+        gsap.utils.toArray(selector).forEach((el) => el.classList.add("motion-pending"));
         gsap.set(selector, { opacity: 0, y: 20 });
         ScrollTrigger.batch(selector, {
             start: "top 90%",
             once: true,
-            onEnter: (batch) => gsap.to(batch, {
+            onEnter: (batch) => animate(batch, { opacity: 0, y: 20 }, {
                 opacity: 1,
                 y: 0,
                 duration: 0.6,
                 ease: "power2.out",
-                stagger: 0.1,
-                clearProps: "transform" // hand hover transforms back to CSS
+                stagger: 0.1
             })
         });
     });
 }
+
+// The hero text starts hidden (see the <head> of index.html) so it doesn't flash
+// before the entrance animation; GSAP's inline styles have taken over by now.
+document.documentElement.classList.remove("motion-hero");

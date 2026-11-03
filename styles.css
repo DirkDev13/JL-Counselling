@@ -108,7 +108,7 @@ textarea:focus-visible {
     cursor: pointer;
     font-size: 1.5rem;
     letter-spacing: 0.5px;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     align-self: center;
     text-align: center;
 }
@@ -121,6 +121,12 @@ textarea:focus-visible {
 
 .btn:hover {
     color: var(--text-light);
+}
+
+/* Outline buttons sit on the cream background, so keep their text teal */
+.learn-more-btn:hover,
+.read-more-btn:hover {
+    color: var(--primary);
 }
 
 .counsel-areas{
@@ -686,6 +692,19 @@ label{
     html {
         scroll-behavior: smooth;
     }
+}
+
+/* Hero text waits hidden for its entrance animation (class set in index.html <head>) */
+.motion-hero .hero-text h2,
+.motion-hero .hero-text p,
+.motion-hero .hero-text .btn,
+.motion-hero .counsel-areas li {
+    opacity: 0;
+}
+
+/* While GSAP animates an element, CSS transitions must not fight it (see main.js) */
+.motion-pending {
+    transition: none !important;
 }
 
 /* Keep section headings clear of the sticky header when jumping to them */
