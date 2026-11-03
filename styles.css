@@ -882,6 +882,12 @@ section[id] {
     border-radius: 1rem;
 }
 
+/* Photos carry width/height attributes so their space is reserved before they
+   load (no page jump); let CSS widths scale them in proportion */
+.contact-photo {
+    height: auto;
+}
+
 /* Social icons */
 .social-logo {
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -943,6 +949,28 @@ section[id] {
 .blog-post:hover {
     transform: translateY(-6px);
     box-shadow: 12px 14px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Contact form: a soft dark panel keeps the white labels readable over the photo */
+.formbox form {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+/* Form fields big enough to tap comfortably */
+.form-element input,
+.form-element textarea {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.form-element label {
+    margin-bottom: 0.4rem;
 }
 
 /* Contact form: inline status instead of browser alerts */
@@ -1059,6 +1087,42 @@ footer {
     .support-subtitle {
         font-size: min(1.5rem, 10cqi);
     }
+    /* Session cards 2x2 with smaller photos, so the booking button is close by */
+    .booking {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .support-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 0.75rem;
+    }
+    .support-icons {
+        width: 7.5rem;
+        height: 7.5rem;
+        margin-bottom: 0.75rem;
+    }
+    /* Testimonials: swipe + dots on phones, so the quotes get the full width */
+    .btn.prev-btn,
+    .btn.next-btn {
+        display: none;
+    }
+    /* Nav links tall enough to tap (44px) */
+    .navbar-item {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 0.25rem;
+    }
+    .navbar-item::after {
+        bottom: 0.5rem;
+    }
+    /* Leave room for the fixed 302px-wide hCaptcha box inside the form panel */
+    .formbox {
+        padding: 0.5rem;
+    }
+    .formbox form {
+        padding: 1.25rem 0.75rem;
+    }
     /* Blog: photos full width, cards and article box clear of the screen edges */
     .blogpost-photo,
     .blogpost2-photo {
@@ -1090,6 +1154,15 @@ footer {
         bottom: 1rem;
         width: 2.75rem;
         height: 2.75rem;
+    }
+}
+
+/* Very small phones: shrink the hCaptcha box to fit the form panel */
+@media (max-width: 360px) {
+    .h-captcha {
+        transform: scale(0.82);
+        transform-origin: center top;
+        margin-bottom: -1rem;
     }
 }
 
