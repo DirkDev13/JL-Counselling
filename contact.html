@@ -7,7 +7,9 @@
   <title>Get in Touch | Jané Lord Counselling</title>
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 </head>
 <body>
     <header class="navbar">
@@ -17,6 +19,7 @@
             <a class="navbar-item" href="blog.html">Blog</a>
         </div>
     </header>
+  <h2 class="blog-page-heading">Get in Touch</h2>
   <div class="formbox"> 
     <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="808c60c1-dd63-4871-ba20-739e8029a86d">
@@ -32,22 +35,33 @@
     
       <div class="form-element">
         <label for="message">Message</label>
-        <textarea id="message" name="message" rows="25" required></textarea>
+        <textarea id="message" name="message" rows="8" required></textarea>
       </div>
 
       <div class="h-captcha" data-captcha="true"></div>
 
       <button class="btn" type="submit">Send Message</button>
+      <p id="form-status" class="form-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 
 <footer>
     © 2026 Jane Lord Counselling, all rights reserved
 </footer>
+<button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="main.js?v=2"></script>
 <script src="https://web3forms.com/client/script.js" async defer></script>
 <script>
   const form = document.getElementById('contact-form');
   const submitBtn = form.querySelector('button[type="submit"]');
+  const statusEl = document.getElementById('form-status');
+
+  function showStatus(message, type) {
+      statusEl.textContent = message;
+      statusEl.className = "form-status visible " + type;
+  }
 
   form.addEventListener('submit', async (e) => {
       e.preventDefault();
@@ -57,6 +71,7 @@
 
       const originalText = submitBtn.textContent;
 
+      statusEl.className = "form-status";
       submitBtn.textContent = "Sending...";
       submitBtn.disabled = true;
 
@@ -69,14 +84,14 @@
           const data = await response.json();
 
           if (response.ok) {
-              alert("Success! Your message has been sent.");
+              showStatus("Thank you! Your message has been sent. I'll be in touch soon.", "success");
               form.reset();
           } else {
-              alert("Error: " + data.message);
+              showStatus("Error: " + data.message, "error");
           }
 
       } catch (error) {
-          alert("Something went wrong. Please try again.");
+          showStatus("Something went wrong. Please try again.", "error");
       } finally {
           submitBtn.textContent = originalText;
           submitBtn.disabled = false;

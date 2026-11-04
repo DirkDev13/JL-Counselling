@@ -32,6 +32,7 @@ header{
 body{
     background-color: var(--bg-primary);
     font-family: var(--main-font);
+    margin: 0;
 }
 
 .navbar{
@@ -107,7 +108,7 @@ textarea:focus-visible {
     cursor: pointer;
     font-size: 1.5rem;
     letter-spacing: 0.5px;
-    transition: 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
     align-self: center;
     text-align: center;
 }
@@ -122,12 +123,20 @@ textarea:focus-visible {
     color: var(--text-light);
 }
 
+/* Outline buttons sit on the cream background, so keep their text teal */
+.learn-more-btn:hover,
+.read-more-btn:hover {
+    color: var(--primary);
+}
+
 .counsel-areas{
     display: flex;
-    gap: 5rem;
+    flex-wrap: wrap;
+    gap: 1rem 5rem;
     font-size: 1.5rem;
     justify-content: center;
-    padding-top: 3rem;
+    padding: 3rem 0 0;
+    margin: 0;
 }
 
 
@@ -136,7 +145,7 @@ textarea:focus-visible {
 }
 
 .about, .support, .booking, .testimonials , .contact{
-    padding: 2rem 12rem;
+    padding: 2rem clamp(1.5rem, 8vw, 12rem);
 }
 
 .about-content{
@@ -221,7 +230,11 @@ textarea:focus-visible {
 .support-pillar{
     padding: 1rem;
     margin-bottom: 1rem;
-    width: 20rem;
+    width: 100%;
+    max-width: 20rem;
+    box-sizing: border-box;
+    border-radius: 2rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -267,21 +280,24 @@ textarea:focus-visible {
 
 .testimonials-track {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .testimonials-pillar {
-  flex: 0 0 33.33%;     /* exactly 3 per row */
+  flex: 0 0 calc(100% / var(--per-view, 3)); /* set by main.js */
   padding: 1rem;
   box-sizing: border-box;
 }
 
 .btn.prev-btn,
 .btn.next-btn {
-  top: 50%;                  /* center vertically */
-  transform: translateY(-50%);
-  background: var(--primary); /* style as you like */
-  padding: 0.5rem 1rem;
+  flex: 0 0 auto;
+  width: 3rem;
+  height: 3rem;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  background: var(--primary);
   cursor: pointer;
   border-radius: 50%;
 }
@@ -289,12 +305,6 @@ textarea:focus-visible {
 
 
 
-
-.testimonials-pillar{
-  flex: 0 0 33.33%; /* 3 per row */
-  padding: 1rem;
-  box-sizing: border-box;
-}
 
 .testimonials-initial{
     font-size: 1.5rem;
@@ -517,8 +527,10 @@ label{
         padding: 1rem;
     }
     .navbar-items {
-        flex-direction: column;
-        align-items: center;
+        gap: 0.75rem;
+    }
+    .logo {
+        width: 5rem;
     }
 
     /* Hero section */
@@ -625,7 +637,6 @@ label{
         gap: 1rem;
     }
     .testimonials-pillar {
-        flex: 0 0 100%;
         height: auto;
     }
 
@@ -669,5 +680,511 @@ label{
     }
     .blogpost-container{
         flex-direction: column;
+    }
+}
+
+/* ============================================================
+   Motion & UX enhancements
+   (layout/motion only — uses the existing colour tokens)
+   ============================================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Hero text waits hidden for its entrance animation (class set in index.html <head>) */
+.motion-hero .hero-text h2,
+.motion-hero .hero-text p,
+.motion-hero .hero-text .btn,
+.motion-hero .counsel-areas li {
+    opacity: 0;
+}
+
+/* While GSAP animates an element, CSS transitions must not fight it (see main.js) */
+.motion-pending {
+    transition: none !important;
+}
+
+/* Keep section headings clear of the sticky header when jumping to them */
+section[id] {
+    scroll-margin-top: 7rem;
+}
+
+/* Sticky header that condenses once you scroll */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: var(--bg-primary);
+    transition: box-shadow 0.3s ease;
+}
+
+.logo {
+    transition: width 0.3s ease;
+}
+
+.navbar.scrolled {
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
+}
+
+.navbar.scrolled .logo {
+    width: 6rem;
+}
+
+/* Nav links: underline grows in on hover / for the section in view */
+.navbar-item {
+    position: relative;
+    padding: 0.25rem 0;
+    transition: color 0.25s ease;
+}
+
+.navbar-item::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
+
+.navbar-item:hover::after,
+.navbar-item:focus-visible::after,
+.navbar-item.active::after {
+    transform: scaleX(1);
+}
+
+.navbar-item.active {
+    color: var(--primary);
+}
+
+/* Buttons: tactile press feedback */
+.btn:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: progress;
+}
+
+/* Smooth expand / collapse (Learn More + booking calendar) */
+.collapsible {
+    scroll-margin-top: 8rem;
+    display: grid;
+    grid-template-rows: 0fr;
+    opacity: 0;
+    transition: grid-template-rows 0.5s ease, opacity 0.4s ease;
+}
+
+.collapsible.open {
+    grid-template-rows: 1fr;
+    opacity: 1;
+}
+
+.collapsible-inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+/* Session card titles stay on one centred line: the text scales with the card
+   width (cqi = 1% of the card) and tops out at the original 2rem */
+.support-pillar {
+    container-type: inline-size;
+}
+
+.support-subtitle {
+    white-space: nowrap;
+    text-align: center;
+    font-size: 1.5rem; /* fallback for browsers without container units */
+    font-size: min(2rem, 10cqi);
+}
+
+/* Session cards are clickable (they open the calendar) */
+.support-pillar:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 4px;
+}
+
+.support-pillar:focus-visible,
+.support-pillar:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.support-icons {
+    transition: transform 0.4s ease;
+}
+
+.support-pillar:hover .support-icons {
+    transform: scale(1.04);
+}
+
+/* Testimonials: swipeable track + dots */
+.testimonials-content {
+    align-items: center;
+}
+
+.testimonials-wrapper {
+    touch-action: pan-y;
+    cursor: grab;
+    border-radius: 1.5rem;
+    transition: height 0.4s ease;
+}
+
+.testimonials-track {
+    align-items: flex-start;
+}
+
+.testimonials-wrapper:active {
+    cursor: grabbing;
+}
+
+.testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.25rem;
+    margin-top: 1.5rem;
+}
+
+.testimonials-dot {
+    all: unset;
+    width: 1.5rem;
+    height: 1.5rem;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.testimonials-dot::before {
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 1rem;
+    background: var(--primary);
+    opacity: 0.3;
+    transition: width 0.3s ease, opacity 0.3s ease;
+}
+
+.testimonials-dot.active::before {
+    width: 1.5rem;
+    opacity: 1;
+}
+
+.testimonials-dot:focus-visible {
+    outline: 3px solid var(--primary);
+    border-radius: 1rem;
+}
+
+/* Photos carry width/height attributes so their space is reserved before they
+   load (no page jump); let CSS widths scale them in proportion */
+.contact-photo {
+    height: auto;
+}
+
+/* Social icons */
+.social-logo {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 1rem;
+}
+
+/* Blog photos: one 4:3 frame everywhere (cards and articles), cropped to
+   fill rather than stretched, so wide and portrait photos look the same */
+.blog-thumbnail,
+.blogpost-photo,
+.blogpost2-photo {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 1rem;
+}
+
+.blog-thumbnail {
+    margin: 1rem 0;
+}
+
+/* In articles the photo sits beside the text on wider screens */
+.blogpost-photo,
+.blogpost2-photo {
+    flex: 0 0 40%;
+    width: 40%;
+    max-width: 30rem; /* the source photos are small; don't blow them up */
+}
+
+/* Keep the face in frame when a portrait photo is cropped */
+.photo-focus-top {
+    object-position: center 25%;
+}
+
+/* Article box scales its side margins like the other sections */
+.blogpost-box {
+    margin: 2rem clamp(1rem, 8vw, 12rem);
+}
+
+/* Long blog titles grow instead of being cut off */
+.blog-title,
+.blog-snippet {
+    height: auto;
+    min-height: 5.5rem;
+    overflow: visible;
+}
+
+/* Blog cards lift on hover */
+.blog-box {
+    padding: 1rem clamp(1rem, 4vw, 4rem);
+}
+
+.blog-post {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-6px);
+    box-shadow: 12px 14px 24px rgba(0, 0, 0, 0.22);
+}
+
+/* Contact form: a soft dark panel keeps the white labels readable over the photo */
+.formbox form {
+    box-sizing: border-box;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+/* Form fields big enough to tap comfortably */
+.form-element input,
+.form-element textarea {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+}
+
+.form-element label {
+    margin-bottom: 0.4rem;
+}
+
+/* Contact form: inline status instead of browser alerts */
+.form-status {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+    background: var(--bg-card);
+    color: var(--primary);
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.form-status:empty {
+    display: none;
+}
+
+.form-status.visible {
+    padding: 1rem;
+    opacity: 1;
+    transform: none;
+}
+
+.form-status.error {
+    color: var(--text-dark);
+}
+
+/* Back to top */
+.back-to-top {
+    all: unset;
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+    z-index: 90;
+    width: 3.25rem;
+    height: 3.25rem;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.back-to-top.visible:hover {
+    transform: translateY(-3px);
+}
+
+.back-to-top:focus-visible {
+    outline: 3px solid var(--primary);
+    outline-offset: 3px;
+}
+
+footer {
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+/* Tablet / small laptop: the gap between the phone and desktop layouts */
+/* Session cards go four across only when each card has room for its title */
+@media (min-width: 769px) and (max-width: 1365px) {
+    .support-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1100px) {
+    .about-content {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .profile-photo {
+        width: 100%;
+        max-width: 40rem;
+    }
+    .contact {
+        gap: 4rem;
+    }
+    .contact-photo {
+        width: 22rem;
+    }
+    .counsel-areas {
+        gap: 1rem 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar.scrolled {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .navbar.scrolled .logo {
+        width: 3.5rem;
+    }
+    section[id] {
+        scroll-margin-top: 5rem;
+    }
+    /* Keep the footer text clear of the back-to-top button in the corner */
+    footer {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+    .support-subtitle {
+        font-size: min(1.5rem, 10cqi);
+    }
+    /* Session cards 2x2 with smaller photos, so the booking button is close by */
+    .booking {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .support-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem 0.75rem;
+    }
+    .support-icons {
+        width: 7.5rem;
+        height: 7.5rem;
+        margin-bottom: 0.75rem;
+    }
+    /* Testimonials: swipe + dots on phones, so the quotes get the full width */
+    .btn.prev-btn,
+    .btn.next-btn {
+        display: none;
+    }
+    /* Nav links tall enough to tap (44px) */
+    .navbar-item {
+        display: inline-flex;
+        align-items: center;
+        min-height: 44px;
+        padding: 0 0.25rem;
+    }
+    .navbar-item::after {
+        bottom: 0.5rem;
+    }
+    /* Leave room for the fixed 302px-wide hCaptcha box inside the form panel */
+    .formbox {
+        padding: 0.5rem;
+    }
+    .formbox form {
+        padding: 1.25rem 0.75rem;
+    }
+    /* Blog: photos full width, cards and article box clear of the screen edges */
+    .blogpost-photo,
+    .blogpost2-photo {
+        flex-basis: auto;
+        width: 100%;
+        max-width: 32rem;
+        margin: 0 auto 1rem;
+    }
+    .blog-box {
+        margin: 0;
+        padding: 1rem;
+    }
+    .blog-post {
+        box-sizing: border-box;
+        max-width: 32rem;
+        padding: 1.25rem;
+    }
+    .blog-title,
+    .blog-snippet {
+        min-height: 0;
+    }
+    .blogpost-box {
+        margin: 0 1rem 2rem;
+        padding: 1rem 1.25rem;
+        border-radius: 1rem;
+    }
+    .back-to-top {
+        right: 1rem;
+        bottom: 1rem;
+        width: 2.75rem;
+        height: 2.75rem;
+    }
+}
+
+/* Very small phones: shrink the hCaptcha box to fit the form panel */
+@media (max-width: 360px) {
+    .h-captcha {
+        transform: scale(0.82);
+        transform-origin: center top;
+        margin-bottom: -1rem;
+    }
+}
+
+/* Respect "reduce motion": no transitions, no hover lifts */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    .btn:hover,
+    .support-pillar:hover,
+    .support-pillar:focus-visible,
+    .blog-post:hover,
+    .social-logo:hover {
+        transform: none;
     }
 }

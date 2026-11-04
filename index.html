@@ -7,7 +7,17 @@
     <title>Jane Lord Counselling</title>
 
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600&display=swap"> -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=6">
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <script>
+        // Keep the hero text hidden until main.js starts its entrance animation,
+        // so it doesn't flash in and then jump. Failsafe: show it after 3s regardless.
+        if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            document.documentElement.classList.add("motion-hero");
+            setTimeout(() => document.documentElement.classList.remove("motion-hero"), 3000);
+        }
+    </script>
 </head>
 <body>
     <header class="navbar">
@@ -25,29 +35,31 @@
       <h2 >Rediscover Hope · Rebuild Purpose</h2>
       <p>from wherever you are</p>
       <a class="btn" href="#booking">Book a Session</a>
-      <div class="counsel-areas">
+      <ul class="counsel-areas">
         <li>Trauma</li>
-        <li> Grief</li>
+        <li>Grief</li>
         <li>Anger</li>
         <li>Anxiety</li>
         <li>Addiction</li>
-      </div>
+      </ul>
     </div>
   </section>
 
 <section id="about" class="about">
     <h2 class="section-heading">About</h2>
     <div class="about-content">
-        <img class="profile-photo" src="assets/images/Profile-photo.jpg" alt="Portrait of Jané Lord">
+        <img class="profile-photo" src="assets/images/Profile-photo.jpg" width="1200" height="1600" loading="lazy" alt="Portrait of Jané Lord">
         <div class="about-textbox">
             <p class="about-subtitle">Specialist Wellness Counsellor | BA Hons (Psychology)</p>
             <p class="about-location">East London</p>
             <p class="about-text">Hi, I am Jané Lord. The youth of South Africa is especially close to my heart. My five years of teaching experience, along with my role as a youth worker and school counsellor, have given me valuable insight into the challenges faced by learners, teachers, and parents. I believe it is part of my calling to walk alongside young people as they grow into resilient, confident, and purposeful individuals.</p>
-            <div id="extra-about-text" class="hidden">
+            <div id="extra-about-text" class="collapsible">
+                <div class="collapsible-inner">
                 <p class="about-text">I am a dedicated and professional counsellor who works effectively both independently and within a team. I am a highly organised and efficient individual who approaches each client with positivity, empathy, and perseverance, supporting meaningful growth and lasting outcomes. I am grounded in my roots and values, which guide both my work and relationships. I focus on spiritual, physical and emotional well-being as important pillars in the counselling journey.</p>
                 <p class="about-text">I practise a person-centered approach, allowing the client to make their own decisions and discover their own potential through the counselling sessions. With the right guidance, supportive structures, and faith as small as a mustard seed, I believe clients can climb even the greatest of mountains.</p>
+                </div>
             </div>
-            <button id="learn-more-btn" class="btn learn-more-btn">Learn More &rarr;</button> 
+            <button id="learn-more-btn" class="btn learn-more-btn" aria-expanded="false" aria-controls="extra-about-text">Learn More &rarr;</button> 
         </div>
     </div>
   </section>
@@ -56,36 +68,37 @@
 <section class="booking" id="booking">
         <h2 class="section-heading">Book a Session</h2>
     <div class="support-content">
-        <div class="support-pillar">
-            <img class="support-icons" src="assets/images/support-preteens.png" alt="Support for children aged 6 to 12">
+        <div class="support-pillar" role="button" tabindex="0" aria-controls="booking-info">
+            <img class="support-icons" loading="lazy" src="assets/images/support-preteens.webp" alt="Support for children aged 6 to 12">
             <p class="support-subtitle">6-12 Year Olds</p> 
             <p class="support-text">1 hour | R450</p>
            
         </div>
-        <div class="support-pillar">
-            <img class="support-icons" src="assets/images/support-teen.png" alt="Support for teenagers aged 13 to 18">
+        <div class="support-pillar" role="button" tabindex="0" aria-controls="booking-info">
+            <img class="support-icons" loading="lazy" src="assets/images/support-teen.webp" alt="Support for teenagers aged 13 to 18">
             <p  class="support-subtitle">13-18 Year Olds</p>
             <p class="support-text">1 hour | R450</p>
         </div>
-        <div class="support-pillar">
-            <img class="support-icons" src="assets/images/support-parents.png" alt="Support for adults and parents">
+        <div class="support-pillar" role="button" tabindex="0" aria-controls="booking-info">
+            <img class="support-icons" loading="lazy" src="assets/images/support-parents.webp" alt="Support for adults and parents">
             <p  class="support-subtitle">Adults</p>
             <p class="support-text">1 hour | R450</p>
         </div>
-        <div class="support-pillar">
-            <img class="support-icons" src="assets/images/support-school.png" alt="Support for schools and teachers">
+        <div class="support-pillar" role="button" tabindex="0" aria-controls="booking-info">
+            <img class="support-icons" loading="lazy" src="assets/images/support-school.webp" alt="Support for schools and teachers">
             <p  class="support-subtitle">Schools & Teachers</p>
             <p class="support-text">2 hours</p>
         </div>
          
     </div>
     <div class="support-bookingbtn">
-         <button id="booking-btn" class="btn learn-more-btn">Book a Session</button> 
-         <div id="booking-info" class="hidden">
-            <div class="calendly-inline-widget" data-url="https://calendly.com/janelord010/30min">
-            <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+         <button id="booking-btn" class="btn learn-more-btn" aria-expanded="false" aria-controls="booking-info">Book a Session</button>
+         <div id="booking-info" class="collapsible">
+            <div class="collapsible-inner">
+                <div class="calendly-inline-widget" data-url="https://calendly.com/janelord010/30min"></div>
+                <script src="https://assets.calendly.com/assets/external/widget.js" type="text/javascript" async></script>
+            </div>
          </div>
-
     </div>
     
     <!-- <h2 class="section-heading">Book a Session</h2>
@@ -100,9 +113,13 @@
 <section class="testimonials" id="testimonials">
     <h2 class="section-heading">Testimonials</h2>
     <div class="testimonials-content">
-        <button id="prev-btn" class="btn prev-btn">&larr;</button> 
-        <div class="testimonials-wrapper">
+        <button id="prev-btn" class="btn prev-btn" aria-label="Previous testimonials">&larr;</button> 
+        <div class="testimonials-wrapper" tabindex="0" role="region" aria-roledescription="carousel" aria-label="Client testimonials (use arrow keys to browse)">
             <div class="testimonials-track">
+                <div class="testimonials-pillar">
+                    <p class="testimonials-text">"The sessions really changed my view of self, others & the world"</p>
+                    <p class="testimonials-initial">- T.S.</p>
+                </div>
                 <div class="testimonials-pillar">
                     <p class="testimonials-text">"Ek kan met Tannie oor enigiets praat. Tannie gee goeie advies, is altyd vriendelik en judge glad nie."</p>
                     <p class="testimonials-initial">- L.M.</p>
@@ -127,18 +144,15 @@
                     <p class="testimonials-text">"Ek het by die studievaardighede-werkswinkel geleer hoe om opsommings beter en slimmer te doen. Tannie het baie goed verduidelik."</p>
                     <p class="testimonials-initial">- L.E.</p>
                 </div>
-                <div class="testimonials-pillar">
-                    <p class="testimonials-text">"The sessions really changed my view of self, others & the world"</p>
-                    <p class="testimonials-initial">- T.S.</p>
-                </div>
             </div>
         </div>
-        <button id="next-btn" class="btn next-btn">&rarr;</button>
+        <button id="next-btn" class="btn next-btn" aria-label="Next testimonials">&rarr;</button>
     </div>
+    <div class="testimonials-dots"></div>
 </section>
 
 <section id="contact" class="contact">
-    <img class="contact-photo" src="assets/images/coffee-photo.jpeg" alt="Coffee and conversation image representing counselling support">
+    <img class="contact-photo" src="assets/images/coffee-photo.jpeg" width="960" height="1280" loading="lazy" alt="Coffee and conversation image representing counselling support">
     <div class="contact-content">
         <h2 class="section-heading">Contact</h2>
 
@@ -158,6 +172,10 @@
         © 2026 Jane Lord Counselling, all rights reserved
     </footer>
 
-    <script src="main.js"></script>
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">&uarr;</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" integrity="sha512-onMTRKJBKz8M1TnqqDuGBlowlH0ohFzMXYRNebz+yOcc5TQr/zAKsthzhuv0hiyUKEiQEQXEynnXCvNTOk50dg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="main.js?v=2"></script>
 </body>
 </html>
